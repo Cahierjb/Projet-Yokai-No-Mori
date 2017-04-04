@@ -25,7 +25,7 @@ namespace Bibliotheque
         {
             get
             {
-                return string.Format("Bonjour {0}, il est {1:dd/MM/yyyy H:mm:ss zzz}", Prenom, new DateTime());
+                return string.Format("Bonjour {0}, il est {1:dd/MM/yyyy H:mm:ss zzz}", Prenom, DateTime.Now);
             }
         }
     }
