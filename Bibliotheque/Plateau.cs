@@ -8,12 +8,10 @@ namespace Bibliotheque
     public class Plateau
     {
         //champs
-        private int[,] terrain= new int [3, 4];
-        private int pieceJ1 = 1;
-        private int pieceJ2 = 2;
-
+        private Pieces[,] terrain= new Pieces [3, 4];
+ 
         //Propriétés
-        public int[,] Terrain
+        public Pieces[,] Terrain
         {
             get
             {
@@ -22,26 +20,33 @@ namespace Bibliotheque
         }
 
         //Constructeurs
-        public Plateau(int[,] terr)
+        public Plateau(Pieces[,] terr)
         {
             terrain = terr;
         }
 
         //Methodes
-        public int[,] initialisation()
+        public Pieces[,] initialisation()
         {
-            for(int i = 0; i <= 3; i++)
-            {
-                for(int j = 0; j <= 4; j++)
-                {
-                    terrain[i,j]=0;
-                }
-            }
-            for(int i = 0;i <= 3; i++) { terrain[i, 1] = 2; }
-            terrain[2,2] = 2;
-            for (int i = 0; i <= 3; i++) { terrain[i, 3] = 2; }
-            terrain[3,2] = 1;
+            Kitsune kitsj1 = new Kitsune();
+            Kodama  kodj1 = new Kodama();
+            Koropokkuru koroj1= new Koropokkuru();
+            Tanuki tanuj1 = new Tanuki();
+            Kitsune kitsj2 = new Kitsune();
+            Kodama kodj2 = new Kodama();
+            Koropokkuru koroj2 = new Koropokkuru();
+            Tanuki tanuj2 = new Tanuki();
+            terrain[0,0] = tanuj2;
+            terrain[0,1] = koroj2;
+            terrain[0,2] = kitsj2;
+            terrain[1,1] = kodj2;
+            terrain[3,0] = tanuj1;
+            terrain[3,1] = koroj1;
+            terrain[3,2] = kitsj1;
+            terrain[2,1] = kodj1;
             return terrain;
         }
+
+
     }
 }
