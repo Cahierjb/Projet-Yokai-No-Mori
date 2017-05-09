@@ -7,5 +7,17 @@ namespace Bibliotheque
 {
     public class Kitsune : Pieces
     {
+
+        
+        public Kitsune(string _nom, int[,] _pos): base (_nom, _pos)
+        {
+
+        }
+
+        // Méthode
+        protected int[,] Deplace()
+        {
+
+        }
     }
 }

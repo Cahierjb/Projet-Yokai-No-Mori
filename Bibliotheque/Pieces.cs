@@ -24,12 +24,7 @@ namespace Bibliotheque
         public int[,] Position { get; set; }
 
 
-
         // Méthode
 
-        public int[,] Deplace()
-        {
-            
-        }
     }
 }
