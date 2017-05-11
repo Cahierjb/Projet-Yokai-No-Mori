@@ -22,8 +22,28 @@ namespace Bibliotheque
         }
 
         // Propriétés
-        public int PositionX { get { return positionX; }}
-        public int PositionY { get { return positionX; }}
+        public int PositionX
+        {
+            get{return positionX;}
+            set
+            {
+                if((value>=0) && (value <= 3))
+                {
+                    positionX = value;
+                }
+            }
+        }
+        public int PositionY
+        {
+            get { return positionX; }
+            set
+            {
+                if ((value >= 0) && (value <= 2))
+                {
+                    positionX = value;
+                }
+            }
+        }
         public int NumJoueur { get { return numJoueur; } }
 
 
