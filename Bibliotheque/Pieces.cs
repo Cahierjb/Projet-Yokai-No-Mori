@@ -10,20 +10,21 @@ namespace Bibliotheque
         // Champs
         private int positionX;
         private int positionY;
-        private Plateau plat = new Plateau();
-
+        private int numJoueur;
+        protected Plateau plat;
+ 
         // Constructeur
-        public Pieces(int _posX, int _posY)
+        public Pieces(int _posX, int _posY,int _numJ)
         {
             positionX = _posX;
             positionY = _posY;
+            numJoueur = _numJ;
         }
 
         // Propriétés
-        public string Nom { get; set; }
         public int PositionX { get { return positionX; }}
         public int PositionY { get { return positionX; }}
-        public Plateau Plat { get { return plat; }}
+        public int NumJoueur { get { return numJoueur; } }
 
 
         // Méthode

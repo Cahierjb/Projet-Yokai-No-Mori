@@ -9,7 +9,7 @@ namespace Bibliotheque
     {
 
         
-        public Kitsune(int _posX, int _posY): base (_posX, _posY)
+        public Kitsune(int _posX, int _posY,int _numJ): base (_posX, _posY,_numJ)
         {  
         }
 
@@ -17,19 +17,19 @@ namespace Bibliotheque
         protected void CaseAccesible()
         {
             int[,] CaseAccesible = new int[3, 4];
-            if (Plat.terrain[PositionX + 1,PositionY +1] != null )
+            if (plat.CheckCase(PositionX + 1, PositionY + 1))
             {
                 CaseAccesible[PositionX + 1, PositionY + 1] = 1;
             }
-            if (Plat.terrain[PositionX + 1, PositionY - 1] != null)
+            if (plat.CheckCase(PositionX + 1, PositionY - 1))
             {
                 CaseAccesible[PositionX + 1, PositionY - 1] = 1;
             }
-            if (Terrain[PositionX - 1, PositionY + 1] != null)
+            if (plat.CheckCase(PositionX - 1, PositionY + 1))
             {
                 CaseAccesible[PositionX - 1, PositionY + 1] = 1;
             }
-            if (Terrain[PositionX - 1, PositionY - 1] != null)
+            if (plat.CheckCase(PositionX - 1, PositionY - 1))
             {
                 CaseAccesible[PositionX - 1, PositionY - 1] = 1;
             }
