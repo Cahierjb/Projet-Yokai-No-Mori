@@ -8,15 +8,13 @@ namespace Bibliotheque
     public class Plateau
     {
         //champs
-        private Pieces[,] terrain= new Pieces [3, 4];
- 
+        private Pieces[,] terrain = new Pieces[4,3];
+
         //Propriétés
-        public Pieces[,] Terrain
+        public Pieces this[int posX,int posY]
         {
-            get
-            {
-                return terrain;
-            }
+            get { return terrain[posX,posY]; }
+            set { terrain[posX,posY] = value;}
         }
 
         //Constructeurs
@@ -28,11 +26,11 @@ namespace Bibliotheque
         //Methodes
         public Pieces[,] initialisation()
         {
-            Kitsune kitsj1 = new Kitsune();
+            Kitsune kitsj1 = new Kitsune(2,3);
             Kodama  kodj1 = new Kodama();
             Koropokkuru koroj1= new Koropokkuru();
             Tanuki tanuj1 = new Tanuki();
-            Kitsune kitsj2 = new Kitsune();
+            Kitsune kitsj2 = new Kitsune(0,2);
             Kodama kodj2 = new Kodama();
             Koropokkuru koroj2 = new Koropokkuru();
             Tanuki tanuj2 = new Tanuki();
@@ -46,6 +44,50 @@ namespace Bibliotheque
             terrain[2,1] = kodj1;
             return terrain;
         }
+        public int[] GetPosition(Pieces piece)
+        {
+            int[] TabPosition = new int[2];
+            for(int i = 0;i <= 3; i++)
+            {
+                for(int j = 0; j <= 2; i++)
+                {
+                    if (terrain[i,j] == piece)
+                    {
+                        TabPosition[0] = piece.PositionX;
+                        TabPosition[1] = piece.PositionY;
+                    }
+                }
+            }
+            return TabPosition;
+        }
+      /*  public int[,] GetCaseAccesible(Pieces piece)
+        {
+            int[,] CaseAccesible = new int[3,4];
+            if (piece.GetType() == typeof(Kitsune))
+            {
+                if (terrain[piece.PositionX + 1, piece.PositionY + 1] != null)
+                {
+                    CaseAccesible[piece.PositionX + 1, piece.PositionY + 1] = 1;
+                }
+                if (terrain[piece.PositionX + 1, piece.PositionY - 1] != null)
+                {
+                    CaseAccesible[piece.PositionX + 1, piece.PositionY - 1] = 1;
+                }
+                if (terrain[piece.PositionX - 1, piece.PositionY + 1] != null)
+                {
+                    CaseAccesible[piece.PositionX - 1, piece.PositionY + 1] = 1;
+                }
+                if (terrain[piece.PositionX - 1, piece.PositionY - 1] != null)
+                {
+                    CaseAccesible[piece.PositionX - 1, piece.PositionY - 1] = 1;
+                }
+            }
+            else if (piece.GetType() == typeof(Tanuki))
+            {
+
+            }
+            return CaseAccesible;
+        }*/
 
 
     }

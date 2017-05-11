@@ -8,20 +8,22 @@ namespace Bibliotheque
     public class Pieces
     {
         // Champs
-        private string nom;
-        private int[,] position;
-
+        private int positionX;
+        private int positionY;
+        private Plateau plat = new Plateau();
 
         // Constructeur
-        public Pieces(string _nom, int[,] _pos)
+        public Pieces(int _posX, int _posY)
         {
-            Nom = _nom;
-            Position = _pos;
+            positionX = _posX;
+            positionY = _posY;
         }
 
         // Propriétés
         public string Nom { get; set; }
-        public int[,] Position { get; set; }
+        public int PositionX { get { return positionX; }}
+        public int PositionY { get { return positionX; }}
+        public Plateau Plat { get { return plat; }}
 
 
         // Méthode
