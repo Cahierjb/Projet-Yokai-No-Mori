@@ -11,8 +11,7 @@ namespace Bibliotheque
         private int positionX;
         private int positionY;
         private int numJoueur;
-        protected Plateau plat;
- 
+
         // Constructeur
         public Pieces(int _posX, int _posY,int _numJ)
         {
@@ -48,6 +47,9 @@ namespace Bibliotheque
 
 
         // Méthode
-
+        public void AfficheTestPiece()
+        {
+            Console.WriteLine("( " + PositionX + " , " + PositionY + " )");
+        }
     }
 }

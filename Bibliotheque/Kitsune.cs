@@ -14,7 +14,7 @@ namespace Bibliotheque
         }
 
         // Méthode
-        protected void CaseAccesible()
+        public int[,] CaseAccesible(Plateau plat)
         {
             int[,] CaseAccesible = new int[3, 2];
             CaseAccesible = null;
@@ -34,9 +34,14 @@ namespace Bibliotheque
             {
                 CaseAccesible[PositionX - 1, PositionY - 1] = 1;
             }
+            return CaseAccesible;
         }
-        protected void Deplacement(int posX,int posY)
+        //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie dans un tableau de 2 case
+        public void Deplacement(int[] pos,Plateau plat)
         {
+            int posX, posY;
+            posX = pos[0];
+            posY = pos[1];
             this.PositionX = posX;
             this.PositionY = posY;
             plat.SetPosition(this);

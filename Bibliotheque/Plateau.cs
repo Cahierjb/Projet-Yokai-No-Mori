@@ -8,48 +8,52 @@ namespace Bibliotheque
     public class Plateau
     {
         //champs
-        private Pieces[,] terrain = new Pieces[3, 2];
+        private Pieces[,] terrain = new Pieces[4, 3];
         private Pieces[] ReserveJ1 = new Pieces[2];
         private Pieces[] ReserveJ2 = new Pieces[2];
+        private int test = 2;
 
 
         //Propriétés
-        public Pieces[,] this[int posX,int PosY]
+        public Pieces[,] this[int posX, int PosY]
         {
-              get { return terrain; }
-          //  set { SetPosition(piece); }
+            get { return terrain; }
+            //  set { SetPosition(piece); }
         }
-
+        public int Test
+        {
+            get { return test; }
+        }
 
         //Constructeurs
-        public Plateau(Pieces[,] terr,Pieces[] resJ1,Pieces[] resJ2)
-        {
-            terrain = terr;
-            ReserveJ1 = resJ1;
-            ReserveJ2 = resJ2;
-        }
+        public Plateau() { }
 
         //Methodes
         public Pieces[,] initialisation()//instancie les pieces et les place a leurs position initiale, vide également les reserves des joueurs
         {
             ReserveJ1 = null;
             ReserveJ2 = null;
-            Kitsune kitsj1 = new Kitsune(2, 3, 1);
-            Kodama kodj1 = new Kodama();
-            Koropokkuru koroj1 = new Koropokkuru();
-            Tanuki tanuj1 = new Tanuki();
+            //Pieces joueurs 1
+            Tanuki tanuj1 = new Tanuki(3, 0, 1);
+            Koropokkuru koroj1 = new Koropokkuru(3, 1, 1);
+            Kitsune kitsj1 = new Kitsune(3, 2, 1);
+            Kodama kodj1 = new Kodama(2,1,1);
+            //Pieces joueur 2
+            Tanuki tanuj2 = new Tanuki(0, 0, 2);
+            Koropokkuru koroj2 = new Koropokkuru(0, 1, 2);
             Kitsune kitsj2 = new Kitsune(0, 2, 2);
-            Kodama kodj2 = new Kodama();
-            Koropokkuru koroj2 = new Koropokkuru();
-            Tanuki tanuj2 = new Tanuki();
-            terrain[0, 0] = tanuj2;
-            terrain[0, 1] = koroj2;
-            terrain[0, 2] = kitsj2;
-            terrain[1, 1] = kodj2;
+            Kodama kodj2 = new Kodama(1,1,2);
+            //Pieces joueurs 1
             terrain[3, 0] = tanuj1;
             terrain[3, 1] = koroj1;
             terrain[3, 2] = kitsj1;
             terrain[2, 1] = kodj1;
+            //Pieces joueur 2
+            terrain[0, 0] = tanuj2;
+            terrain[0, 1] = koroj2;
+            terrain[0, 2] = kitsj2;
+            terrain[1, 1] = kodj2;
+      
             return terrain;
         }
         public int[] GetPosition(Pieces piece)//Permet de connaitre la position d'une piece sur le terrain de jeu
@@ -61,8 +65,8 @@ namespace Bibliotheque
                 {
                     if (terrain[i, j] == piece)
                     {
-                        TabPosition[0] = terrain[i,j].PositionX;
-                        TabPosition[1] = terrain[i,j].PositionY;
+                        TabPosition[0] = terrain[i, j].PositionX;
+                        TabPosition[1] = terrain[i, j].PositionY;
                     }
                 }
             }
@@ -73,7 +77,7 @@ namespace Bibliotheque
             int[] AncienePosition = GetPosition(piece);
             bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
             int typepiece = 0;
-            if (CheckCase(piece.PositionX,piece.PositionY,piece.NumJoueur))// cas ou la case est vide
+            if (CheckCase(piece.PositionX, piece.PositionY, piece.NumJoueur))// cas ou la case est vide
             {
                 terrain[piece.PositionX, piece.PositionY] = piece;
                 Deplacement = true;
@@ -98,7 +102,7 @@ namespace Bibliotheque
 
         }
 
-        public bool CheckCase(int posX, int posY,int NumJ)//retourne vrais si la case voulus et disponible et faux si non
+        public bool CheckCase(int posX, int posY, int NumJ)//retourne vrais si la case voulus et disponible et faux si non
         {
             if ((terrain[posX, posY] == null) || terrain[posX, posY].NumJoueur != NumJ)
             {
@@ -106,8 +110,16 @@ namespace Bibliotheque
             }
             else return false;
         }
+        public void AfficheTestPlateau()
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                for (int j = 0; j <= 2; i++)
+                {
+                    terrain[i, j].AfficheTestPiece();
+                }
 
-
-
+            }
+        }
     }
 }
