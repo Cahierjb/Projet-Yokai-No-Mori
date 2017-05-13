@@ -33,6 +33,14 @@ namespace Bibliotheque
         {
             ReserveJ1 = null;
             ReserveJ2 = null;
+            for (int i = 0; i == 3; i++)
+            {
+                for (int j = 0; j == 2; j++)
+                {
+                    terrain[i, i] = null;
+                }
+            }
+
             //Pieces joueurs 1
             Tanuki tanuj1 = new Tanuki(3, 0, 1);
             Koropokkuru koroj1 = new Koropokkuru(3, 1, 1);
@@ -61,7 +69,7 @@ namespace Bibliotheque
             int[] TabPosition = new int[2];
             for (int i = 0; i <= 3; i++)
             {
-                for (int j = 0; j <= 2; i++)
+                for (int j = 0; j <= 2; j++)
                 {
                     if (terrain[i, j] == piece)
                     {
@@ -114,9 +122,15 @@ namespace Bibliotheque
         {
             for (int i = 0; i <= 3; i++)
             {
-                for (int j = 0; j <= 2; i++)
+                Console.WriteLine();
+                for (int j = 0; j <= 2; j++)
                 {
-                    terrain[i, j].AfficheTestPiece();
+                    if (terrain[i, j] != null)
+                    {
+                        terrain[i, j].AfficheTestPiece();
+                    }
+                    else
+                        Console.Write("(   x   )");
                 }
 
             }

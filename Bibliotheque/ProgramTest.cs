@@ -13,7 +13,7 @@ namespace Bibliotheque
             Plateau PlatTest = new Plateau();
             PlatTest.initialisation();
             PlatTest.AfficheTestPlateau();
-
+            Console.ReadLine();
 
         }
     }

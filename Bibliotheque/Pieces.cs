@@ -49,7 +49,7 @@ namespace Bibliotheque
         // Méthode
         public void AfficheTestPiece()
         {
-            Console.WriteLine("( " + PositionX + " , " + PositionY + " )");
+            Console.Write("( " + this.PositionX + " , " + this.PositionY + " )");
         }
     }
 }
