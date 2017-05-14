@@ -8,9 +8,10 @@ namespace Bibliotheque
     public class Pieces
     {
         // Champs
-        private int positionX;
-        private int positionY;
+        protected int positionX;
+        protected int positionY;
         private int numJoueur;
+        protected int[,] caseAccesible = new int[3, 2];
 
         // Constructeur
         public Pieces(int _posX, int _posY,int _numJ)
@@ -26,7 +27,7 @@ namespace Bibliotheque
             get{return positionX;}
             set
             {
-                if((value>=0) && (value <= 3))
+                if((value >= 0) && (value < 4))
                 {
                     positionX = value;
                 }
@@ -34,12 +35,12 @@ namespace Bibliotheque
         }
         public int PositionY
         {
-            get { return positionX; }
+            get { return positionY; }
             set
             {
-                if ((value >= 0) && (value <= 2))
+                if ((value >= 0) && (value < 3))
                 {
-                    positionX = value;
+                    positionY = value;
                 }
             }
         }

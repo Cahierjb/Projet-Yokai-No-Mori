@@ -14,37 +14,39 @@ namespace Bibliotheque
         }
 
         // Méthode
-        public int[,] CaseAccesible(Plateau plat)
+        public int[,] CaseAccesible(Plateau plat) 
         {
-            int[,] CaseAccesible = new int[3, 2];
-            CaseAccesible = null;
+            int[,] caseAccesible = new int[4, 3];
+            for (int i = 0; i == 3; i++)
+            {
+                for (int j = 0; j == 2; j++)
+                {
+                    caseAccesible[i, j] = 0;
+                }
+
+            }
             if (plat.CheckCase(PositionX + 1, PositionY + 1,this.NumJoueur))
             {
-                CaseAccesible[PositionX + 1, PositionY + 1] = 1;
+                caseAccesible[PositionX + 1, PositionY + 1] = 1;
             }
             if (plat.CheckCase(PositionX + 1, PositionY - 1, this.NumJoueur))
             {
-                CaseAccesible[PositionX + 1, PositionY - 1] = 1;
+                caseAccesible[PositionX + 1, PositionY - 1] = 1;
             }
             if (plat.CheckCase(PositionX - 1, PositionY + 1, this.NumJoueur))
             {
-                CaseAccesible[PositionX - 1, PositionY + 1] = 1;
+                caseAccesible[PositionX - 1, PositionY + 1] = 1;
             }
             if (plat.CheckCase(PositionX - 1, PositionY - 1, this.NumJoueur))
             {
-                CaseAccesible[PositionX - 1, PositionY - 1] = 1;
+                caseAccesible[PositionX - 1, PositionY - 1] = 1;
             }
-            return CaseAccesible;
+            return caseAccesible;
         }
-        //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie dans un tableau de 2 case
-        public void Deplacement(int[] pos,Plateau plat)
+        //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
+        public void Deplacement(int posX, int posY,Plateau plat)
         {
-            int posX, posY;
-            posX = pos[0];
-            posY = pos[1];
-            this.PositionX = posX;
-            this.PositionY = posY;
-            plat.SetPosition(this);
+            plat.SetPosition(this,posX,posY);
 
         }
     }
