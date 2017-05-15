@@ -9,11 +9,9 @@ namespace Bibliotheque
     {
         //champs
         private Pieces[,] terrain = new Pieces[4, 3];
-        private Pieces[] ReserveJ1 = new Pieces[2];
-        private Pieces[] ReserveJ2 = new Pieces[2];
-
-
-        //Propriétés
+        private Pieces[] ReserveJ1 = new Pieces[3];
+        private Pieces[] ReserveJ2 = new Pieces[3];
+        private bool findepartie = false;
 
         //Constructeurs
         public Plateau() { }
@@ -21,7 +19,7 @@ namespace Bibliotheque
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leurs position initiale, vide également les reserves des joueurs
         {
-            for (int i = 0;i==2 ; i++) ReserveJ1[i] = null;
+            for (int i = 0;i == 2 ; i++) ReserveJ1[i] = null;
             for (int i = 0; i == 2; i++) ReserveJ2[i] = null;
             for (int i = 0; i == 3; i++)
             {
@@ -43,6 +41,7 @@ namespace Bibliotheque
 
             return terrain;
         }
+
         public int[] GetPosition(Pieces piece)//Permet de connaitre la position d'une piece sur le terrain de jeu
         {
             int[] TabPosition = new int[2];
@@ -53,7 +52,7 @@ namespace Bibliotheque
                 {
                     if (terrain[i, j] != null)
                     {
-                        if (terrain[i, j].PositionX == piece.PositionX && terrain[i, j].PositionY == piece.PositionY && terrain[i, j].NumJoueur == piece.NumJoueur)
+                        if (terrain[i,j] == piece)//verifie si les pieces sont identiques
                         {
                             TabPosition[0] = terrain[i, j].PositionX;
                             TabPosition[1] = terrain[i, j].PositionY;
@@ -63,35 +62,47 @@ namespace Bibliotheque
             }
             return TabPosition;
         }
-        public void SetPosition(Pieces piece,int newx,int newy)//Permet de changer la position d'une pieces
+
+        public void SetPosition(Pieces piece, int newx, int newy)//Permet de changer la position d'une pieces
         {
             int[] AncienePosition = new int[2];
             AncienePosition = GetPosition(piece);
             piece.PositionX = newx;
             piece.PositionY = newy;
             bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
-            int typepiece = 0;
-            if (piece.GetType() == typeof(Kitsune)) { typepiece = 0; }//determine la piece en question
-            if (piece.GetType() == typeof(Tanuki)) { typepiece = 1; }//afin de connaitre quel piece placer en reserve
-            if (piece.GetType() == typeof(Kodama)) { typepiece = 2; }
-            if (CheckCase(piece.PositionX, piece.PositionY, piece.NumJoueur))// cas ou la case est vide
+            int typepiece = -1;
+            if (terrain[newx, newy] != null)
             {
-                terrain[piece.PositionX, piece.PositionY] = piece;
+                if (terrain[newx, newy].GetType() == typeof(Kitsune)) { typepiece = 0; }//determine la piece en question
+                if (terrain[newx, newy].GetType() == typeof(Tanuki)) { typepiece = 1; }//afin de connaitre quel piece placer en reserve
+                if (terrain[newx, newy].GetType() == typeof(Kodama)) { typepiece = 2; }
+                if (terrain[newx, newy].GetType() == typeof(Koropokkuru)) { typepiece = 3; }
+            }
+            if (terrain[newx, newy] == null)// cas ou la case est vide
+            {
+                terrain[newx,newy] = piece;
                 Deplacement = true;
             }
-            else if (piece.NumJoueur == 1)//cas ou la case appartient au joueur adverse si le joueur est le joueur 1
+            else if (terrain[newx, newy].NumJoueur == 1)//cas ou la case appartient au joueur adverse si le joueur est le joueur 1
             {
-                ReserveJ2[typepiece] = terrain[piece.PositionX, piece.PositionY];
+                terrain[newx, newy].NumJoueur = 2;
+                ReserveJ2[typepiece] = terrain[newx, newy];
+                terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            else if (piece.NumJoueur == 2)//cas ou la case appartient au joueur adverse si le joueur est le joueur 2
+            else if (terrain[newx, newy].NumJoueur == 2)//cas ou la case appartient au joueur adverse si le joueur est le joueur 2
             {
-                ReserveJ1[typepiece] = terrain[piece.PositionX, piece.PositionY];
+                terrain[newx,newy].NumJoueur = 1;
+                ReserveJ1[typepiece] = terrain[newx, newy];
+                terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            if (Deplacement)//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain
+            else if (typepiece == 3) findepartie = true;
+            if (Deplacement)//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
             {
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
+                piece.PositionX = newx;
+                piece.PositionY = newy;
             }
 
         }
@@ -109,6 +120,31 @@ namespace Bibliotheque
             else return false;
         }
 
+        public void Parachutage(Pieces para,int posX,int posY)
+        {
+            for(int i = 0;i <= 2; i++)
+            {
+                if(para.NumJoueur == 2)
+                {
+                    if (para == ReserveJ2[i])
+                    {
+                        SetPosition(para, posX, posY);
+                        ReserveJ2[i] = null;
+                    }
+                }
+                if (para.NumJoueur == 1)
+                {
+                    if (para == ReserveJ1[i])
+                    {
+                        SetPosition(para, posX, posY);
+                        ReserveJ1[i] = null;
+                    }
+                }
+
+            }
+        }
+
+        #region Methode de Test
         public void AfficheTestPlateau()
         {
             for (int i = 0; i <= 3; i++)
@@ -121,10 +157,28 @@ namespace Bibliotheque
                         terrain[i, j].AfficheTestPiece();
                     }
                     else
-                        Console.Write("(   x   )");
+                        Console.Write("None :(   x   )   |");
                 }
 
             }
         }
+        public void AfficheReserve()
+        {
+            Console.WriteLine();
+            Console.WriteLine("ReserveJ1:");
+            for (int i = 0; i < 3; i++)
+            {
+                if (ReserveJ1[i] != null) { Console.Write(i); }
+                else Console.Write("X");
+            }
+            Console.WriteLine();
+            Console.WriteLine("ReserveJ2:");
+            for (int i = 0; i < 3; i++)
+            {
+                if (ReserveJ2[i] != null) { Console.Write(i); }
+                else Console.Write("X");
+            }
+        }
+        # endregion
     }
 }

@@ -29,8 +29,9 @@ namespace Bibliotheque
 
         PlatTest.initialisation(tanuj1,tanuj2,kitsj1,kitsj2,koroj1,koroj2,kodj1,kodj2);
         PlatTest.AfficheTestPlateau();
+        PlatTest.AfficheReserve();
         Console.WriteLine();
-        tabtest = kitsj1.CaseAccesible(PlatTest);
+        /*tabtest = kitsj1.CaseAccesible(PlatTest);
         for (int x = 0; x <= 3; x++)
         {
             Console.WriteLine("");
@@ -43,9 +44,7 @@ namespace Bibliotheque
          tabtest2 = PlatTest.GetPosition(kitsj1);
          Console.Write("Getposition( x y ) : ( ");
          for (int i = 0; i <= 1; i++) Console.Write(tabtest2[i]+" ");
-         Console.Write(")");
-         kitsj1.Deplacement(2, 1, PlatTest);
-         PlatTest.AfficheTestPlateau();
+         Console.Write(")");*/
          Console.ReadLine();
 
         }

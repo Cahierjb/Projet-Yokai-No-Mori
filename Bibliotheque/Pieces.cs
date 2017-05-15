@@ -44,13 +44,29 @@ namespace Bibliotheque
                 }
             }
         }
-        public int NumJoueur { get { return numJoueur; } }
-
-
+        public int NumJoueur
+        {
+            get { return numJoueur; }
+            set { if (value > 0 && value < 3) numJoueur = value; }
+        }
         // Méthode
+        public void Deplacement(int posX, int posY, Plateau plat)
+        {
+            plat.SetPosition(this, posX, posY);
+
+        }
+
+        //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
+        #region Methode de Test
         public void AfficheTestPiece()
         {
-            Console.Write("( " + this.PositionX + " , " + this.PositionY + " )");
+            if (this.GetType() == typeof(Kitsune)) {  Console.Write("Kits :"); }//determine la piece en question
+            if (this.GetType() == typeof(Tanuki)) { Console.Write("Tanu :"); }//afin de connaitre quel piece placer en reserve
+            if (this.GetType() == typeof(Kodama)) { Console.Write("Koda :"); }
+            if (this.GetType() == typeof(Koropokkuru)) { Console.Write("Koro :"); }
+            Console.Write("( " + this.PositionX + " , " + this.PositionY + " ) J"+this.numJoueur+"|");
         }
+        #endregion
+
     }
 }
