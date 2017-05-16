@@ -23,8 +23,8 @@ namespace Bibliotheque
                 {
                     caseAccesible[i, j] = 0;
                 }
-
             }
+
             if (plat.CheckCase(PositionX + 1, PositionY + 1,this.NumJoueur))
             {
                 caseAccesible[PositionX + 1, PositionY + 1] = 1;
@@ -43,10 +43,8 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
-        public void Deplacement(int posX, int posY, Plateau plat)
-        {
-            plat.SetPosition(this, posX, posY);
 
-        }
+        //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
+
     }
 }
