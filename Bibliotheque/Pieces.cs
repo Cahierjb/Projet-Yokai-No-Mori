@@ -62,6 +62,7 @@ namespace Bibliotheque
             if (this.GetType() == typeof(Kitsune)) {  Console.Write("Kits :"); }//determine la piece en question
             if (this.GetType() == typeof(Tanuki)) { Console.Write("Tanu :"); }//afin de connaitre quel piece placer en reserve
             if (this.GetType() == typeof(Kodama)) { Console.Write("Koda :"); }
+            if (this.GetType() == typeof(Kodama_Samurai)) { Console.Write("KodS :"); }
             if (this.GetType() == typeof(Koropokkuru)) { Console.Write("Koro :"); }
             Console.Write("( " + this.PositionX + " , " + this.PositionY + " ) J"+this.numJoueur+"|");
         }

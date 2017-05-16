@@ -93,32 +93,28 @@ namespace Bibliotheque
             }
             else if (terrain[newx, newy].NumJoueur == 2)//cas ou la case appartient au joueur adverse si le joueur est le joueur 2
             {
-                terrain[newx,newy].NumJoueur = 1;
+                terrain[newx, newy].NumJoueur = 1;
                 ReserveJ1[typepiece] = terrain[newx, newy];
                 terrain[newx, newy] = piece;
                 Deplacement = true;
             }
             else if (typepiece == 3) findepartie = true;
-            if (typepiece > -1)
+
+
+            if (Deplacement && (typepiece > -1) && (!(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece)))//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
             {
-                if (Deplacement && !(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece))//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
+                terrain[AncienePosition[0], AncienePosition[1]] = null;
+                if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
                 {
-                    terrain[AncienePosition[0], AncienePosition[1]] = null;
-                    piece.PositionX = newx;
-                    piece.PositionY = newy;
-                    if(typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
-                        {
-                        Kodama_Samurai KodSJ1 = new Kodama_Samurai(newx,newy,1,1);
-                        terrain[newx, newy] = koSJ1;
-                        }
-                    else if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
-                        {
-                        Kodama_Samurai KodSJ2 = new Kodama_Samurai(newx, newy, 2, 0);
-                        terrain[newx, newy] = koSJ2;
-                    }
+                    Kodama_Samurai koSJ1 = new Kodama_Samurai(newx, newy, 1, true);
+                    terrain[newx, newy] = koSJ1;
+                }
+                else if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
+                {
+                    Kodama_Samurai koSJ2 = new Kodama_Samurai(newx, newy, 2, false);
+                    terrain[newx, newy] = koSJ2;
                 }
             }
-
         }
 
         public bool CheckCase(int posX, int posY, int NumJ)//retourne vrais si la case voulus et disponible et faux si non
@@ -158,13 +154,6 @@ namespace Bibliotheque
             }
         }
 
-        public void ZonePromo()
-        {
-            for(int i = 0; i <= 2; i++)
-            {
-                if(terrain[i] =
-            }
-        }
 
         #region Methode de Test
         public void AfficheTestPlateau()

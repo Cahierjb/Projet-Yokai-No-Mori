@@ -52,6 +52,9 @@ namespace Bibliotheque
             PlatTest.Parachutage(kodj2, 3, 2);
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
+            kodj2.Deplacement(0, 2,PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
 
             Console.ReadLine();
 
