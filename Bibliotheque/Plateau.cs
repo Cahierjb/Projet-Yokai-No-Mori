@@ -19,7 +19,7 @@ namespace Bibliotheque
         public Plateau() { }
 
         //Methodes
-        public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leurs position initiale, vide également les reserves des joueurs
+        public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
         {
             for (int i = 0;i==2 ; i++) ReserveJ1[i] = null;
             for (int i = 0; i == 2; i++) ReserveJ2[i] = null;
