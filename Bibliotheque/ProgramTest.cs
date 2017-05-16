@@ -20,9 +20,10 @@ namespace Bibliotheque
         Koropokkuru koroj2 = new Koropokkuru(0, 1, 2);
         Kitsune kitsj2 = new Kitsune(0, 2, 2);
         Kodama kodj2 = new Kodama(1, 1, 2);
+        Kodama_Samurai koSj1;
+        Kodama_Samurai koSj2;
 
-
-        Plateau PlatTest = new Plateau();
+            Plateau PlatTest = new Plateau();
 
         int[,] tabtest = new int[4,3];//tableau de test pour methode case accesible
         int[] tabtest2 = new int[2];//Tableau de test pour mehode GetPosition
@@ -31,21 +32,28 @@ namespace Bibliotheque
         PlatTest.AfficheTestPlateau();
         PlatTest.AfficheReserve();
         Console.WriteLine();
-        /*tabtest = kitsj1.CaseAccesible(PlatTest);
-        for (int x = 0; x <= 3; x++)
-        {
-            Console.WriteLine("");
-            for (int y = 0; y <= 2; y++)
+            /*tabtest = kitsj1.CaseAccesible(PlatTest);
+            for (int x = 0; x <= 3; x++)
             {
-                Console.Write(tabtest[x, y]);
-            }
-         }
-         Console.WriteLine("");
-         tabtest2 = PlatTest.GetPosition(kitsj1);
-         Console.Write("Getposition( x y ) : ( ");
-         for (int i = 0; i <= 1; i++) Console.Write(tabtest2[i]+" ");
-         Console.Write(")");*/
-         Console.ReadLine();
+                Console.WriteLine("");
+                for (int y = 0; y <= 2; y++)
+                {
+                    Console.Write(tabtest[x, y]);
+                }
+             }
+             Console.WriteLine("");
+             tabtest2 = PlatTest.GetPosition(kitsj1);
+             Console.Write("Getposition( x y ) : ( ");
+             for (int i = 0; i <= 1; i++) Console.Write(tabtest2[i]+" ");
+             Console.Write(")");*/
+            kitsj1.Deplacement(1, 1, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+            PlatTest.Parachutage(kodj2, 3, 2);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            Console.ReadLine();
 
         }
     }

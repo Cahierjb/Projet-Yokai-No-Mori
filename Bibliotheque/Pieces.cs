@@ -55,7 +55,6 @@ namespace Bibliotheque
             plat.SetPosition(this, posX, posY);
 
         }
-
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
         #region Methode de Test
         public void AfficheTestPiece()

@@ -65,11 +65,6 @@ namespace Bibliotheque
 
         public void SetPosition(Pieces piece, int newx, int newy)//Permet de changer la position d'une pieces
         {
-            int[] AncienePosition = new int[2];
-            AncienePosition = GetPosition(piece);
-            piece.PositionX = newx;
-            piece.PositionY = newy;
-            bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
             int typepiece = -1;
             if (terrain[newx, newy] != null)
             {
@@ -78,6 +73,12 @@ namespace Bibliotheque
                 if (terrain[newx, newy].GetType() == typeof(Kodama)) { typepiece = 2; }
                 if (terrain[newx, newy].GetType() == typeof(Koropokkuru)) { typepiece = 3; }
             }
+            int[] AncienePosition = new int[2];
+            AncienePosition = GetPosition(piece);
+            piece.PositionX = newx;
+            piece.PositionY = newy;
+            bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
+            
             if (terrain[newx, newy] == null)// cas ou la case est vide
             {
                 terrain[newx,newy] = piece;
@@ -98,11 +99,24 @@ namespace Bibliotheque
                 Deplacement = true;
             }
             else if (typepiece == 3) findepartie = true;
-            if (Deplacement)//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
+            if (typepiece > -1)
             {
-                terrain[AncienePosition[0], AncienePosition[1]] = null;
-                piece.PositionX = newx;
-                piece.PositionY = newy;
+                if (Deplacement && !(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece))//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
+                {
+                    terrain[AncienePosition[0], AncienePosition[1]] = null;
+                    piece.PositionX = newx;
+                    piece.PositionY = newy;
+                    if(typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
+                        {
+                        Kodama_Samurai KodSJ1 = new Kodama_Samurai(newx,newy,1,1);
+                        terrain[newx, newy] = koSJ1;
+                        }
+                    else if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
+                        {
+                        Kodama_Samurai KodSJ2 = new Kodama_Samurai(newx, newy, 2, 0);
+                        terrain[newx, newy] = koSJ2;
+                    }
+                }
             }
 
         }
@@ -141,6 +155,14 @@ namespace Bibliotheque
                     }
                 }
 
+            }
+        }
+
+        public void ZonePromo()
+        {
+            for(int i = 0; i <= 2; i++)
+            {
+                if(terrain[i] =
             }
         }
 

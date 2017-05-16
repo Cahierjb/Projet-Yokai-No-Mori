@@ -43,5 +43,10 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
+        public void Deplacement(int posX, int posY, Plateau plat)
+        {
+            plat.SetPosition(this, posX, posY);
+
+        }
     }
 }
