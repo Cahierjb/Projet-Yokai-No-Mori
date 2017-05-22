@@ -42,7 +42,7 @@ namespace Bibliotheque
             PlatTest.AfficheReserve();
 
             piece = kodj2;
-            PlatTest.Parachutage(piece, 3, 0);
+            piece.Parachutage(3, 0,PlatTest);
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
 
@@ -52,6 +52,18 @@ namespace Bibliotheque
             PlatTest.AfficheReserve();
 
             piece.Deplacement(1, 0, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            kitsj2.Deplacement(1, 1, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            kitsj1.Parachutage(0, 2, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            kitsj2.Deplacement(0, 0, PlatTest);
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
 

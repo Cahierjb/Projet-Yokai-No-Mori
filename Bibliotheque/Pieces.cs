@@ -84,6 +84,30 @@ namespace Bibliotheque
             plat.SetPosition(this, posX, posY);
 
         }
+
+        public void Parachutage(int posX, int posY, Plateau plat)
+        {
+            for (int i = 0; i <= 2; i++)
+            {
+                if (this.NumJoueur == 2)
+                {
+                    if (this == plat.ReserveJ2[i])
+                    {
+                        plat.SetPosition(this, posX, posY);
+                        plat.ReserveJ2[i] = null;
+                    }
+                }
+                if (this.NumJoueur == 1)
+                {
+                    if (this == plat.ReserveJ1[i])
+                    {
+                        plat.SetPosition(this, posX, posY);
+                        plat.ReserveJ1[i] = null;
+                    }
+                }
+
+            }
+        }
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
         #region Methode de Test
         public void AfficheTestPiece()
