@@ -50,6 +50,35 @@ namespace Bibliotheque
             set { if (value > 0 && value < 3) numJoueur = value; }
         }
         // Méthode
+
+        public int[,] CaseAccesible(Plateau plat)
+        {
+            int[,] caseAccesible = new int[4, 3];
+            for (int i = 0; i == 3; i++)
+            {
+                for (int j = 0; j == 2; j++)
+                {
+                    caseAccesible[i, j] = 0;
+                }
+            }
+            return caseAccesible;
+        }
+
+        public int[,] InitTableau()
+        {
+            int[,] caseAccesible = new int[4, 3];
+            for (int i = 0; i == 3; i++)
+            {
+                for (int j = 0; j == 2; j++)
+                {
+                    caseAccesible[i, j] = 0;
+                }
+            }
+
+            return caseAccesible;
+        }
+
+
         public void Deplacement(int posX, int posY, Plateau plat)
         {
             plat.SetPosition(this, posX, posY);

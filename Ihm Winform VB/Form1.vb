@@ -3,9 +3,13 @@
 Public Class Form1
 
 
-    Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
+    Private Sub btnOK_Click(sender As Object, e As EventArgs)
         'Dim hw As New HelloWorld(tbPrenom.Text)
 
         'lblMessage.Text = hw.Bonjour()
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

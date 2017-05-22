@@ -16,14 +16,7 @@ namespace Bibliotheque
         // Méthode
         public int[,] CaseAccesible(Plateau plat) 
         {
-            int[,] caseAccesible = new int[4, 3];
-            for (int i = 0; i == 3; i++)
-            {
-                for (int j = 0; j == 2; j++)
-                {
-                    caseAccesible[i, j] = 0;
-                }
-            }
+            int[,] caseAccesible = this.InitTableau();
 
             if (plat.CheckCase(PositionX + 1, PositionY + 1,this.NumJoueur))
             {
