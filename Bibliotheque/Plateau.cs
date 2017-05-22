@@ -9,12 +9,24 @@ namespace Bibliotheque
     {
         //champs
         private Pieces[,] terrain = new Pieces[4, 3];
-        private Pieces[] ReserveJ1 = new Pieces[3];
-        private Pieces[] ReserveJ2 = new Pieces[3];                                                                                                                                             
+        private Pieces[] reserveJ1 = new Pieces[3];
+        private Pieces[] reserveJ2 = new Pieces[3];                                                                                                                                             
         private bool findepartie = false;
 
         //Constructeurs
         public Plateau() { }
+
+        //Propriétées
+        public Pieces[] ReserveJ1
+        {
+            get { return this.reserveJ1; }
+            set { this.reserveJ1 = value; }
+        }
+        public Pieces[] ReserveJ2
+        {
+            get { return this.reserveJ2; }
+            set { this.reserveJ2 = value; }
+        }
 
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
@@ -119,30 +131,6 @@ namespace Bibliotheque
                 return true;
             }
             else return false;
-        }
-
-        public void Parachutage(Pieces para,int posX,int posY)
-        {
-            for(int i = 0;i <= 2; i++)
-            {
-                if(para.NumJoueur == 2)
-                {
-                    if (para == ReserveJ2[i])
-                    {
-                        SetPosition(para, posX, posY);
-                        ReserveJ2[i] = null;
-                    }
-                }
-                if (para.NumJoueur == 1)
-                {
-                    if (para == ReserveJ1[i])
-                    {
-                        SetPosition(para, posX, posY);
-                        ReserveJ1[i] = null;
-                    }
-                }
-
-            }
         }
 
         private void ZonePromoKod(Pieces koda,int typepiece)

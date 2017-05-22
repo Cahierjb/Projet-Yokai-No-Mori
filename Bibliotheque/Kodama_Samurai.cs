@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bibliotheque
 {
-    public class Kodama_Samurai : Pieces
+    public class Kodama_Samurai : Kodama
     {
         protected bool sens;
         public Kodama_Samurai(int _posX, int _posY, int _numJ, bool _sens) : base(_posX, _posY, _numJ)
