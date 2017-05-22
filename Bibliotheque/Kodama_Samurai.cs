@@ -5,16 +5,16 @@ using System.Text;
 
 namespace Bibliotheque
 {
-    public class Kodama_Samurai : Kodama
+    public class Kodama_Samurai : Pieces
     {
         protected bool sens;
         public Kodama_Samurai(int _posX, int _posY, int _numJ, bool _sens) : base(_posX, _posY, _numJ)
-            {
+        {
             sens = _sens;
-            }
+        }
 
         // Méthode
-        public new int[,] CaseAccesible(Plateau plat)
+        public int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = new int[4, 3];
             for (int i = 0; i == 3; i++)
@@ -80,5 +80,6 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
+
     }
 }

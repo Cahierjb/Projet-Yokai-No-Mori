@@ -10,7 +10,7 @@ namespace Bibliotheque
         //champs
         private Pieces[,] terrain = new Pieces[4, 3];
         private Pieces[] ReserveJ1 = new Pieces[3];
-        private Pieces[] ReserveJ2 = new Pieces[3];
+        private Pieces[] ReserveJ2 = new Pieces[3];                                                                                                                                             
         private bool findepartie = false;
 
         //Constructeurs
@@ -29,9 +29,9 @@ namespace Bibliotheque
                 }
             }
             //Pieces joueurs 1
-            terrain[3, 0] = tanuj1;
+            terrain[3, 2] = tanuj1;
             terrain[3, 1] = koroj1;
-            terrain[3, 2] = kitsj1;
+            terrain[3, 0] = kitsj1;
             terrain[2, 1] = kodj1;
             //Pieces joueur 2
             terrain[0, 0] = tanuj2;
@@ -42,23 +42,20 @@ namespace Bibliotheque
             return terrain;
         }
 
-        public int[] GetPosition(Pieces piece)//Permet de connaitre la position d'une piece sur le terrain de jeu
+        private int[] GetPosition(Pieces piece)//Permet de connaitre la position d'une piece sur le terrain de jeu
         {
             int[] TabPosition = new int[2];
-            for (int i = 0; i == 1; i++) TabPosition[i] = 0;
-            for (int i = 0; i <= 3; i++)
+            foreach(Pieces element in terrain)
             { 
-                for (int j = 0; j <= 2; j++)
-                {
-                    if (terrain[i, j] != null)
+                    if (element != null)
                     {
-                        if (terrain[i,j] == piece)//verifie si les pieces sont identiques
+                        if (element == piece)//verifie si les pieces sont identiques
                         {
-                            TabPosition[0] = terrain[i, j].PositionX;
-                            TabPosition[1] = terrain[i, j].PositionY;
+                            TabPosition[0] = element.PositionX;
+                            TabPosition[1] = element.PositionY;
+                            break;
                         }
                     }
-                }
             }
             return TabPosition;
         }
@@ -66,6 +63,14 @@ namespace Bibliotheque
         public void SetPosition(Pieces piece, int newx, int newy)//Permet de changer la position d'une pieces
         {
             int typepiece = -1;
+            int[] AncienePosition = new int[2];
+            AncienePosition = GetPosition(piece);
+
+            piece.PositionX = newx;
+            piece.PositionY = newy;
+
+            bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
+
             if (terrain[newx, newy] != null)
             {
                 if (terrain[newx, newy].GetType() == typeof(Kitsune)) { typepiece = 0; }//determine la piece en question
@@ -73,11 +78,6 @@ namespace Bibliotheque
                 if (terrain[newx, newy].GetType() == typeof(Kodama)) { typepiece = 2; }
                 if (terrain[newx, newy].GetType() == typeof(Koropokkuru)) { typepiece = 3; }
             }
-            int[] AncienePosition = new int[2];
-            AncienePosition = GetPosition(piece);
-            piece.PositionX = newx;
-            piece.PositionY = newy;
-            bool Deplacement = false;//drapeau faux tant que le deplacement de la piece na pas etait acceptée
             
             if (terrain[newx, newy] == null)// cas ou la case est vide
             {
@@ -101,23 +101,14 @@ namespace Bibliotheque
             else if (typepiece == 3) findepartie = true;
 
 
-            if (Deplacement && (typepiece > -1) && (!(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece)))//si il y a eu deplacement, on efface l'ancienne position de la piece sur le terrain et on change les coordonées de la piece
+            if (Deplacement && (typepiece > -1) && (!(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece)))//si il y a deplacement et que la piece existe et que ce n'etait pas un parachutage alors on efface l'ancienne position
             {
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
-                if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
-                {
-                    Kodama_Samurai koSJ1 = new Kodama_Samurai(newx, newy, 1, true);
-                    terrain[newx, newy] = koSJ1;
-                }
-                else if (typepiece == 2 && piece.NumJoueur == 1 && piece.PositionX == 0)
-                {
-                    Kodama_Samurai koSJ2 = new Kodama_Samurai(newx, newy, 2, false);
-                    terrain[newx, newy] = koSJ2;
-                }
+                ZonePromoKod(piece,typepiece);
             }
         }
 
-        public bool CheckCase(int posX, int posY, int NumJ)//retourne vrais si la case voulus et disponible et faux si non
+        public bool CheckCase(int posX, int posY, int NumJ)//retourne vrai si la case voulue et disponible et faux si non
         {
             if (posX > 3 || posX < 0 || posY > 2 || posY < 0)
             {
@@ -151,6 +142,25 @@ namespace Bibliotheque
                     }
                 }
 
+            }
+        }
+
+        private void ZonePromoKod(Pieces koda,int typepiece)
+        {
+            if ((terrain[koda.PositionX, koda.PositionY].GetType() == typeof(Kodama)))
+            {
+                terrain[koda.PositionX, koda.PositionY] = null;
+                if (koda.NumJoueur == 1 && koda.PositionX == 0)
+                {
+                    
+                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1, true);
+                    terrain[koda.PositionX, koda.PositionY] = koda;
+                }
+                else if (koda.NumJoueur == 2 && koda.PositionX == 3)
+                {
+                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1, true);
+                    terrain[koda.PositionX, koda.PositionY] = koda;
+                }
             }
         }
 

@@ -3,7 +3,7 @@
   <Class Name="Bibliotheque.Plateau">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAACAAAAAAACAAAAAAAAAAAgAAAIAAAABABAA=</HashCode>
+      <HashCode>AAAAAACAACAAAAAAACAAAAAAAAIgAgAAAIAAAABUBAA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,37 +22,37 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kitsune">
-    <Position X="6" Y="2.5" Width="1.5" />
+    <Position X="5.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kitsune.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Tanuki">
-    <Position X="7.75" Y="2.5" Width="1.5" />
+    <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tanuki.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kodama">
-    <Position X="9.5" Y="2.5" Width="1.5" />
+    <Position X="10.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kodama.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Koropokkuru">
-    <Position X="11.25" Y="2.5" Width="1.5" />
+    <Position X="12.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Koropokkuru.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kodama_Samurai">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="9" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABAAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Kodama_Samurai.cs</FileName>
     </TypeIdentifier>
   </Class>
