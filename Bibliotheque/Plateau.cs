@@ -141,12 +141,12 @@ namespace Bibliotheque
                 if (koda.NumJoueur == 1 && koda.PositionX == 0)
                 {
                     
-                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1, true);
+                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1);
                     terrain[koda.PositionX, koda.PositionY] = koda;
                 }
                 else if (koda.NumJoueur == 2 && koda.PositionX == 3)
                 {
-                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1, true);
+                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1);
                     terrain[koda.PositionX, koda.PositionY] = koda;
                 }
             }

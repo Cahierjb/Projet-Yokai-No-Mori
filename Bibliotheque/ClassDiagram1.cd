@@ -3,14 +3,14 @@
   <Class Name="Bibliotheque.Plateau">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAACAAAAAAACAAAAAAAAIgAgAAAIAAAABUBAA=</HashCode>
+      <HashCode>AIAAAACAACAAAAAAACAAAAAAAAIgAgAAAIAAAABEBAA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Pieces">
     <Position X="8.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAEgAAQAIAAAAAAAAAAAAAQAAAAAQAA=</HashCode>
+      <HashCode>AABAAAAAAAAEAAEggAQAIAAAAAAAAAAAAAQAAAAQQAA=</HashCode>
       <FileName>Pieces.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,17 +50,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kodama_Samurai">
-    <Position X="9" Y="1.75" Width="1.5" />
+    <Position X="9.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kodama_Samurai.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Bibliotheque.Plateau">
-    <Position X="3.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAACAAAAAAACAAAAAAAAIgAgAAAIAAAABUBAA=</HashCode>
-      <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -2,14 +2,16 @@
 
 Public Class Form1
 
+    Dim titre = "Titre de base"
 
-    Private Sub btnOK_Click(sender As Object, e As EventArgs)
-        'Dim hw As New HelloWorld(tbPrenom.Text)
 
-        'lblMessage.Text = hw.Bonjour()
-    End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
+    Private Sub BtnPartie_Click(sender As Object, e As EventArgs) Handles BtnPartie.Click
 
     End Sub
+
+    Private Sub BtnReg_Click(sender As Object, e As EventArgs) Handles BtnReg.Click
+        MessageBox.Show(titre)
+    End Sub
+
 End Class
