@@ -7,6 +7,13 @@ namespace Bibliotheque
 {
     public class Kodama : Pieces
     {
+        //champs
+        private int compteur = 0;
+        private bool changeposition = true;
+
+        //Propriétées
+        public int Compteur{ get; set; }
+
         public Kodama(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
         {
         }
@@ -37,6 +44,24 @@ namespace Bibliotheque
                 }
             }
             return caseAccesible;
+        }
+
+        public void Position()
+        {
+            if(this.PositionX == 0 && changeposition)
+            {
+                compteur++;
+                changeposition = false;
+            }
+            else if (changeposition == false && compteur > 0)
+            {   
+                if(this.PositionX != 0)
+                {
+                    changeposition = true;
+                }
+
+            }
+
         }
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
 

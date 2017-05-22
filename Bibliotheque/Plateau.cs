@@ -11,7 +11,7 @@ namespace Bibliotheque
         private Pieces[,] terrain = new Pieces[4, 3];
         private Pieces[] reserveJ1 = new Pieces[3];
         private Pieces[] reserveJ2 = new Pieces[3];                                                                                                                                             
-        private bool findepartie = false;
+        private int findepartie = 0;
 
         //Constructeurs
         public Plateau() { }
@@ -27,6 +27,7 @@ namespace Bibliotheque
             get { return this.reserveJ2; }
             set { this.reserveJ2 = value; }
         }
+        public int Findepartie { get;}
 
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
@@ -110,7 +111,7 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            else if (typepiece == 3) findepartie = true;
+            else if (typepiece == 3) findepartie = 1;
 
 
             if (Deplacement && (typepiece > -1) && (!(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece)))//si il y a deplacement et que la piece existe et que ce n'etait pas un parachutage alors on efface l'ancienne position
@@ -150,8 +151,8 @@ namespace Bibliotheque
                     terrain[koda.PositionX, koda.PositionY] = koda;
                 }
             }
-        }
 
+        }
 
         #region Methode de Test
         public void AfficheTestPlateau()
