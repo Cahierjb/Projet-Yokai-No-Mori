@@ -13,6 +13,10 @@ namespace Bibliotheque
         private int numJoueur;
         protected int[,] caseAccesible = new int[3, 2];
 
+        private int compteur = 0;
+        private bool aller = false;
+        private bool retour = false;
+
         // Constructeur
         public Pieces(int _posX, int _posY,int _numJ)
         {
@@ -49,21 +53,10 @@ namespace Bibliotheque
             get { return numJoueur; }
             set { if (value > 0 && value < 3) numJoueur = value; }
         }
+
+        public int Compteur { get; set; }
+
         // Méthode
-
-        public int[,] CaseAccesible(Plateau plat)
-        {
-            int[,] caseAccesible = new int[4, 3];
-            for (int i = 0; i == 3; i++)
-            {
-                for (int j = 0; j == 2; j++)
-                {
-                    caseAccesible[i, j] = 0;
-                }
-            }
-            return caseAccesible;
-        }
-
         public int[,] InitTableau()
         {
             int[,] caseAccesible = new int[4, 3];
@@ -77,7 +70,6 @@ namespace Bibliotheque
 
             return caseAccesible;
         }
-
 
         public void Deplacement(int posX, int posY, Plateau plat)
         {
@@ -108,7 +100,49 @@ namespace Bibliotheque
 
             }
         }
+
+        public int Position()
+        {
+
+            if (this.NumJoueur == 1)
+            {
+                if (this.PositionX == 0)
+                {
+                    aller = true;
+                }
+                if (aller && this.PositionX == 3)
+                {
+                    retour = true;
+                }
+                if (aller && retour)
+                {
+                    compteur++;
+                    aller = false;
+                    retour = false;
+                }
+            }
+            if (this.NumJoueur == 2)
+            {
+                if (this.PositionX == 3)
+                {
+                    aller = true;
+                }
+                if (aller && this.PositionX == 0)
+                {
+                    retour = true;
+                }
+                if (aller && retour)
+                {
+                    compteur++;
+                    aller = false;
+                    retour = false;
+                }
+            }
+            return compteur;
+        }
+
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
+
         #region Methode de Test
         public void AfficheTestPiece()
         {

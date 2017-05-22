@@ -15,11 +15,13 @@ namespace Bibliotheque
             Koropokkuru koroj1 = new Koropokkuru(3, 1, 1);
             Kitsune kitsj1 = new Kitsune(3, 0, 1);
             Kodama kodj1 = new Kodama(2, 1, 1);
+            Kodama_Samurai KodSj1;
             //Pieces joueur 2
             Tanuki tanuj2 = new Tanuki(0, 0, 2);
             Koropokkuru koroj2 = new Koropokkuru(0, 1, 2);
             Kitsune kitsj2 = new Kitsune(0, 2, 2);
             Kodama kodj2 = new Kodama(1, 1, 2);
+            Kodama_Samurai KodSj2;
 
             Pieces piece;
             
