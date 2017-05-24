@@ -53,7 +53,6 @@ namespace Bibliotheque
             get { return numJoueur; }
             set { if (value > 0 && value < 3) numJoueur = value; }
         }
-
         public int Compteur { get; set; }
 
         // Méthode

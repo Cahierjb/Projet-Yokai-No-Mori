@@ -11,6 +11,7 @@ namespace Bibliotheque
         private string nomJoueur;
         private int numJoueur;
         private bool gagnant;
+        private bool commence = false;
 
 
         //propriétées
@@ -29,7 +30,11 @@ namespace Bibliotheque
             get { return gagnant; }
             set { gagnant = value; }
         }
-
+        public bool Commence
+        {
+            get { return commence; }
+            set { commence = value; }
+        }
         //constructeurs
         public  InfoJoueur(string nomj,int numj)
         {

@@ -11,6 +11,7 @@ namespace Bibliotheque
         public Kodama(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
         {
         }
+
         // Méthode
         public int[,] CaseAccesible(Plateau plat)
         {
@@ -32,6 +33,7 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
+
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
 
     }
