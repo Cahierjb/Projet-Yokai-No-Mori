@@ -27,16 +27,14 @@ Partial Class Profils
         Me.TextBoxj1 = New System.Windows.Forms.TextBox()
         Me.TextBoxj2 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnConf = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(31, 210)
+        Me.Label1.Location = New System.Drawing.Point(14, 186)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 13)
         Me.Label1.TabIndex = 1
@@ -44,7 +42,7 @@ Partial Class Profils
         '
         'TextBoxj1
         '
-        Me.TextBoxj1.Location = New System.Drawing.Point(34, 239)
+        Me.TextBoxj1.Location = New System.Drawing.Point(17, 215)
         Me.TextBoxj1.Name = "TextBoxj1"
         Me.TextBoxj1.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxj1.TabIndex = 2
@@ -52,7 +50,7 @@ Partial Class Profils
         '
         'TextBoxj2
         '
-        Me.TextBoxj2.Location = New System.Drawing.Point(274, 239)
+        Me.TextBoxj2.Location = New System.Drawing.Point(257, 215)
         Me.TextBoxj2.Name = "TextBoxj2"
         Me.TextBoxj2.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxj2.TabIndex = 4
@@ -62,24 +60,15 @@ Partial Class Profils
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Location = New System.Drawing.Point(283, 210)
+        Me.Label2.Location = New System.Drawing.Point(266, 186)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(91, 13)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Nom du joueur 2 :"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(400, 300)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
         'BtnConf
         '
-        Me.BtnConf.Location = New System.Drawing.Point(158, 229)
+        Me.BtnConf.Location = New System.Drawing.Point(141, 205)
         Me.BtnConf.Name = "BtnConf"
         Me.BtnConf.Size = New System.Drawing.Size(100, 30)
         Me.BtnConf.TabIndex = 5
@@ -92,16 +81,16 @@ Partial Class Profils
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(511, 354)
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(384, 262)
         Me.Controls.Add(Me.BtnConf)
         Me.Controls.Add(Me.TextBoxj2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBoxj1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Profils"
         Me.Text = "Profils"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -110,6 +99,5 @@ Partial Class Profils
     Friend WithEvents TextBoxj1 As TextBox
     Friend WithEvents TextBoxj2 As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnConf As Button
 End Class

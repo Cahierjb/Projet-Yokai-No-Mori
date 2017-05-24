@@ -7,7 +7,7 @@ Public Class Menu
 
 
     Private Sub BtnPartie_Click(sender As Object, e As EventArgs) Handles BtnPartie.Click
-        Plateau.Show()
+
         Profils.Show()
         Me.Hide()
     End Sub

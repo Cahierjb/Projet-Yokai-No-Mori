@@ -80,6 +80,7 @@ Partial Class Menu
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(784, 562)
         Me.Controls.Add(Me.BtnQuit)
         Me.Controls.Add(Me.BtnReg)
