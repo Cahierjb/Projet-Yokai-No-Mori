@@ -8,9 +8,11 @@ namespace Bibliotheque
     public class Plateau
     {
         //champs
+        private InfoJoueur joueur1;
+        private InfoJoueur joueur2;
         private Pieces[,] terrain = new Pieces[4, 3];
         private Pieces[] reserveJ1 = new Pieces[3];
-        private Pieces[] reserveJ2 = new Pieces[3];                                                                                                                                             
+        private Pieces[] reserveJ2 = new Pieces[3];                                                                                                                                            
         private int findepartie = 0;
 
         //Constructeurs
@@ -27,7 +29,7 @@ namespace Bibliotheque
             get { return this.reserveJ2; }
             set { this.reserveJ2 = value; }
         }
-        public int Findepartie { get;}
+        public int Findepartie { get; set; }
 
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
@@ -91,10 +93,10 @@ namespace Bibliotheque
                 if (terrain[newx, newy].GetType() == typeof(Kodama)) { typepiece = 2; }
                 if (terrain[newx, newy].GetType() == typeof(Koropokkuru)) { typepiece = 3; }
             }
-            
+
             if (terrain[newx, newy] == null)// cas ou la case est vide
             {
-                terrain[newx,newy] = piece;
+                terrain[newx, newy] = piece;
                 Deplacement = true;
             }
             else if (terrain[newx, newy].NumJoueur == 1)//cas ou la case appartient au joueur adverse si le joueur est le joueur 1
@@ -111,13 +113,24 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            else if (typepiece == 3) findepartie = 1;
-
+            else if (typepiece == 3)
+            {
+                findepartie = 1;
+                if(piece.NumJoueur == 1) { joueur1.Gagnant = true; }
+                else { joueur2.Gagnant = true; }
+            }
 
             if (Deplacement && (typepiece > -1) && (!(ReserveJ1[typepiece] == piece) || !(ReserveJ2[typepiece] == piece)))//si il y a deplacement et que la piece existe et que ce n'etait pas un parachutage alors on efface l'ancienne position
             {
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
-                ZonePromoKod(piece,typepiece);
+                ZonePromo(piece,typepiece);
+                if(piece.Compteur == 3)
+                {
+                    Findepartie = 3;
+                    joueur1.Gagnant = true;
+                    joueur2.Gagnant = true;
+
+                }
             }
         }
 
@@ -134,24 +147,38 @@ namespace Bibliotheque
             else return false;
         }
 
-        private void ZonePromoKod(Pieces koda,int typepiece)
+        private void ZonePromo(Pieces piece, int typepiece)
         {
-            if ((terrain[koda.PositionX, koda.PositionY].GetType() == typeof(Kodama)))
+            if ((terrain[piece.PositionX, piece.PositionY].GetType() == typeof(Kodama)))
             {
-                terrain[koda.PositionX, koda.PositionY] = null;
-                if (koda.NumJoueur == 1 && koda.PositionX == 0)
+                terrain[piece.PositionX, piece.PositionY] = null;
+                if (piece.NumJoueur == 1 && piece.PositionX == 0)
                 {
-                    
-                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1);
-                    terrain[koda.PositionX, koda.PositionY] = koda;
+
+                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1);
+                    terrain[piece.PositionX, piece.PositionY] = piece;
                 }
-                else if (koda.NumJoueur == 2 && koda.PositionX == 3)
+                else if (piece.NumJoueur == 2 && piece.PositionX == 3)
                 {
-                    koda = new Kodama_Samurai(koda.PositionX, koda.PositionY, 1);
-                    terrain[koda.PositionX, koda.PositionY] = koda;
+                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1);
+                    terrain[piece.PositionX, piece.PositionY] = piece;
                 }
             }
+            else if ((terrain[piece.PositionX, piece.PositionY].GetType() == typeof(Koropokkuru)))
+            {
+                if (piece.NumJoueur == 1 && piece.PositionX == 0)
+                {
+                    Findepartie = 2;
+                    joueur1.Gagnant = true;
+                      
+                }
+                else if (piece.NumJoueur == 2 && piece.PositionX == 3)
+                {
+                    Findepartie = 2;
+                    joueur2.Gagnant = true;
+                }
 
+            }
         }
 
         #region Methode de Test
