@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class Menu
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,11 +22,12 @@ Partial Class Form1
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
         Me.lblMessage = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnPartie = New System.Windows.Forms.Button()
         Me.BtnReg = New System.Windows.Forms.Button()
+        Me.BtnQuit = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,24 +59,34 @@ Partial Class Form1
         '
         'BtnReg
         '
-        Me.BtnReg.Location = New System.Drawing.Point(349, 360)
+        Me.BtnReg.Location = New System.Drawing.Point(349, 347)
         Me.BtnReg.Name = "BtnReg"
         Me.BtnReg.Size = New System.Drawing.Size(120, 40)
         Me.BtnReg.TabIndex = 5
         Me.BtnReg.Text = "Règles du jeu"
         Me.BtnReg.UseVisualStyleBackColor = True
         '
-        'Form1
+        'BtnQuit
+        '
+        Me.BtnQuit.Location = New System.Drawing.Point(349, 442)
+        Me.BtnQuit.Name = "BtnQuit"
+        Me.BtnQuit.Size = New System.Drawing.Size(120, 40)
+        Me.BtnQuit.TabIndex = 6
+        Me.BtnQuit.Text = "Quitter"
+        Me.BtnQuit.UseVisualStyleBackColor = True
+        '
+        'Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.Controls.Add(Me.BtnQuit)
         Me.Controls.Add(Me.BtnReg)
         Me.Controls.Add(Me.BtnPartie)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblMessage)
-        Me.Name = "Form1"
+        Me.Name = "Menu"
         Me.Text = "Yokai No Mori"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -86,4 +97,5 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnPartie As Button
     Friend WithEvents BtnReg As Button
+    Friend WithEvents BtnQuit As Button
 End Class
