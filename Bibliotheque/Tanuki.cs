@@ -9,9 +9,10 @@ namespace Bibliotheque
     {
         public Tanuki(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
             {
+            image = "C:\\Users\\Jean - Baptiste\\Pictures\\ancien steam.PNG";
             }
 
-        // Méthode
+        // Méthode  
         public int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();

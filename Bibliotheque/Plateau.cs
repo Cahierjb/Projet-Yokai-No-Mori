@@ -31,6 +31,10 @@ namespace Bibliotheque
             get { return this.reserveJ2; }
             set { this.reserveJ2 = value; }
         }
+        public Pieces[,] Terrain
+        {
+            get { return this.terrain; }
+        }
         public int Findepartie { get; set; }
         public InfoJoueur Joueur1 { get; set; }
         public InfoJoueur Joueur2 { get; set; }
@@ -41,6 +45,7 @@ namespace Bibliotheque
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
         {
+            initJoueur(Joueur1,Joueur2);
             for (int i = 0; i == 2; i++) ReserveJ1[i] = null;
             for (int i = 0; i == 2; i++) ReserveJ2[i] = null;
             for (int i = 0; i == 3; i++)

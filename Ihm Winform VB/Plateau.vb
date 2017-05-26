@@ -1,11 +1,20 @@
 ﻿Imports Bibliotheque
 
 Public Class Plateau
+
+    Private Sub MaJAffichage()
+
+
+    End Sub
+
+
     Private Sub Plateau_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Labelj1.Text = Profils.NameJ1()
         Labelj2.Text = Profils.NameJ2()
 
-        Dim tabplateau(2, 3) As Pieces
+        Dim Joueur1 As New InfoJoueur(Profils.NameJ1(), 1)
+        Dim Joueur2 As New InfoJoueur(Profils.NameJ2(), 2)
+
         Dim plateaucs As New Bibliotheque.Plateau
 
         Dim tanuj1 As New Tanuki(3, 2, 1)
@@ -18,20 +27,15 @@ Public Class Plateau
         Dim kitsj2 As New Kitsune(0, 2, 2)
         Dim kodj2 As New Kodama(1, 1, 2)
 
-        'Pieces joueurs 1
-        tabplateau(3, 2) = tanuj1
-        tabplateau(3, 1) = koroj1
-        tabplateau(3, 0) = kitsj1
-        tabplateau(2, 1) = kodj1
-        'Pieces joueur 2
-        tabplateau(0, 0) = tanuj2
-        tabplateau(0, 1) = koroj2
-        tabplateau(0, 2) = kitsj2
-        tabplateau(1, 1) = kodj2
+        plateaucs.Joueur1 = Joueur1
+        plateaucs.Joueur1 = Joueur1
+        plateaucs.initialisation(tanuj1, tanuj2, kitsj1, kitsj2, koroj1, koroj2, kodj1, kodj2)
+
+
+
 
 
 
     End Sub
-
 
 End Class

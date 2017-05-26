@@ -11,6 +11,7 @@ namespace Bibliotheque
         protected int positionX;
         protected int positionY;
         private int numJoueur;
+        protected string image;
         protected int[,] caseAccesible = new int[3, 2];
 
         private int compteur = 0;
@@ -53,6 +54,7 @@ namespace Bibliotheque
             get { return numJoueur; }
             set { if (value > 0 && value < 3) numJoueur = value; }
         }
+        public string Image { get { return image; } }
         public int Compteur { get; set; }
 
         // Méthode
