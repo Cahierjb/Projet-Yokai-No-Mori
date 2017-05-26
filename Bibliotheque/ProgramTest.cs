@@ -14,7 +14,7 @@ namespace Bibliotheque
             Plateau PlatTest = new Plateau();
 
             //Pieces joueurs 1
-            Tanuki tanuj1 = new Tanuki(3, 2, 1);
+            Tanuki tanuj1 = new Tanuki(3, 2, 1,"");
             Koropokkuru koroj1 = new Koropokkuru(3, 1, 1);
             Kitsune kitsj1 = new Kitsune(3, 0, 1);
             Kodama kodj1 = PlatTest.PointerKod1;

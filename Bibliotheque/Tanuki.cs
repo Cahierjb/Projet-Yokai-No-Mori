@@ -7,13 +7,12 @@ namespace Bibliotheque
 {
     public class Tanuki : Pieces
     {
-        public Tanuki(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
+        public Tanuki(int _posX, int _posY, int _numJ,string _img) : base(_posX, _posY, _numJ , _img)
             {
-            image = "C:\\Users\\Jean - Baptiste\\Pictures\\ancien steam.PNG";
             }
 
         // Méthode  
-        public int[,] CaseAccesible(Plateau plat)
+        public new int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 

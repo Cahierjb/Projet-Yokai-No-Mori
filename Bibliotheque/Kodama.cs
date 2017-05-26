@@ -8,7 +8,7 @@ namespace Bibliotheque
     public class Kodama : Pieces
     {
 
-        public Kodama(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
+        public Kodama(int _posX, int _posY, int _numJ,string _img) : base(_posX, _posY, _numJ,_img)
         {
         }
 
