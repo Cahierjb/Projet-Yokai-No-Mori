@@ -1,14 +1,14 @@
 ﻿Imports Bibliotheque
 
 Public Class Plateau
-
+    Dim Joueur1 As InfoJoueur
+    Dim Joueur2 As InfoJoueur
     Dim plateaucs As New Bibliotheque.Plateau
     Dim tabplateau(3, 2) As PictureBox
-    Dim listepiecej1 As New List(Of PictureBox)
-    Dim listepiecej2 As New List(Of PictureBox)
-    Dim pieceSelec As PictureBox
+    Dim piece As Boolean
     Dim PieceX As Integer
     Dim PieceY As Integer
+    Dim tourjoueur As Integer
 
 
     Dim tanuj1 As New Tanuki(3, 2, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
@@ -49,11 +49,11 @@ Public Class Plateau
     End Sub
 
     Private Sub MaJplateau()
-        Dim i, j As Integer
         For i = 0 To 3
             For j = 0 To 2
                 If plateaucs.Terrain(i, j) Is Nothing Then
-                    tabplateau(i, j).Image = Nothing
+                    tabplateau(i, j).Image() = Nothing
+                    tabplateau(i, j).BackColor() = Color.Transparent
                 Else
                     tabplateau(i, j).Load(plateaucs.Terrain(i, j).Image())
                 End If
@@ -61,58 +61,40 @@ Public Class Plateau
         Next i
     End Sub
 
-    Private Sub ListePieceJoueurs()
-        For Each element As Pieces In plateaucs.Terrain
-            If element.NumJoueur = 1 Then
-                listepiecej1.Add(tabplateau(element.PositionX, element.PositionY))
-            ElseIf element.NumJoueur = 2 Then
-                listepiecej2.Add(tabplateau(element.PositionX, element.PositionY))
-            End If
-        Next element
-    End Sub
-
     Private Sub DeplacementPossible()
-        For i = 0 To 3
-            For j = 0 To 2
-                If plateaucs.Terrain(PieceX, PieceY).CaseAccesible(plateaucs)(i, j) = 1 Then
-                    tabplateau(i, j).Load("C:\Users\Jean-Baptiste\Desktop\transparent-drop-shadow-reflection-vector-illustration-35982858.jpg")
-                    tabplateau(i, j).BackColor() = Color.Gold
-                Else
-                    tabplateau(i, j).Load("C:\Users\Jean-Baptiste\Desktop\transparent-drop-shadow-reflection-vector-illustration-35982858.jpg")
-                End If
-            Next j
-        Next i
+        If Not (plateaucs.Terrain(PieceX, PieceY) Is Nothing) Then
+            MaJplateau()
+            For i = 0 To 3
+                For j = 0 To 2
+                    If plateaucs.Terrain(PieceX, PieceY).CaseAccesible(plateaucs)(i, j) = 1 Then
+                        tabplateau(i, j).BackColor() = Color.Yellow
+                    End If
+                Next j
+            Next i
+        End If
     End Sub
-    Private Sub tourjoueur1()
-        Dim action As Boolean
-        'action = False
-        'While action = False
-        'For Each element As PictureBox In listepiecej1
-        'If listepiecej1.Contains(PieceSelec) Then
-        'DeplacementPossible()
-        '            action = True
-        'End If
-        'Next element
 
-        'End While
+    Private Sub PremierJoueur()
+        If Joueur1.Commence Then
+            tourjoueur = 1
+        Else
+            tourjoueur = 2
+        End If
     End Sub
-    Private Sub tourjoueur2()
-    End Sub
+
 
     Private Sub Plateau_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Labelj1.Text = Profils.NameJ1()
         Labelj2.Text = Profils.NameJ2()
 
-        Dim nbtours As Integer
-        Dim Joueur1 As New InfoJoueur(Profils.NameJ1(), 1)
-        Dim Joueur2 As New InfoJoueur(Profils.NameJ2(), 2)
-
-
+        Joueur1 = New InfoJoueur(Profils.NameJ1(), 1)
+        Joueur2 = New InfoJoueur(Profils.NameJ2(), 2)
         plateaucs.Joueur1 = Joueur1
         plateaucs.Joueur2 = Joueur2
         plateaucs.initialisation(tanuj1, tanuj2, kitsj1, kitsj2, koroj1, koroj2, kodj1, kodj2)
         InitTabPlateau()
-        tourjoueur1()
+        PremierJoueur()
+
 
 
 
@@ -120,76 +102,158 @@ Public Class Plateau
     End Sub
 
     Private Sub tourj1_Click(sender As Object, e As EventArgs) Handles tourj1.Click
-        tourjoueur2()
+        tourjoueur = 2
     End Sub
 
-
     Private Sub tourj2_Click(sender As Object, e As EventArgs) Handles tourj2.Click
-        tourjoueur1()
+        tourjoueur = 1
     End Sub
 
 #Region "Clique Picture Box"
     Private Sub tab1_Click(sender As Object, e As EventArgs) Handles tab1.Click
-        pieceSelec = tab1
-        PieceX = 0
-        PieceY = 0
-        DeplacementPossible()
+        If tourjoueur = plateaucs.Terrain(PieceX, PieceY).NumJoueur Then
+            If tab1.BackColor() = Color.Yellow Then
+                plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
+                MaJplateau()
+                tab1.BackColor() = Color.Transparent
+            End If
+        Else
+            PieceX = 0
+            PieceY = 0
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab2_Click(sender As Object, e As EventArgs) Handles tab2.Click
-        pieceSelec = tab2
-        PieceX = 0
-        PieceY = 1
-        DeplacementPossible()
+        If tab2.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 1, plateaucs)
+            MaJplateau()
+            tab2.BackColor() = Color.Transparent
+        Else
+            PieceX = 0
+            PieceY = 1
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab3_Click(sender As Object, e As EventArgs) Handles tab3.Click
-        pieceSelec = tab3
-        PieceX = 0
-        PieceY = 2
+        If tab3.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 2, plateaucs)
+            MaJplateau()
+            tab3.BackColor() = Color.Transparent
+        Else
+            PieceX = 0
+            PieceY = 2
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab4_Click(sender As Object, e As EventArgs) Handles tab4.Click
-        pieceSelec = tab4
-        PieceX = 1
-        PieceY = 0
+        If tab4.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 0, plateaucs)
+            MaJplateau()
+            tab4.BackColor() = Color.Transparent
+        Else
+            PieceX = 1
+            PieceY = 0
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab5_Click(sender As Object, e As EventArgs) Handles tab5.Click
-        pieceSelec = tab5
-        PieceX = 1
-        PieceY = 1
+        If tab5.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 1, plateaucs)
+            MaJplateau()
+            tab5.BackColor() = Color.Transparent
+        Else
+            PieceX = 1
+            PieceY = 1
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab6_Click(sender As Object, e As EventArgs) Handles tab6.Click
-        pieceSelec = tab6
-        PieceX = 1
-        PieceY = 2
+        If tab6.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 2, plateaucs)
+            MaJplateau()
+            tab6.BackColor() = Color.Transparent
+        Else
+            PieceX = 1
+            PieceY = 2
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab7_Click(sender As Object, e As EventArgs) Handles tab7.Click
-        pieceSelec = tab7
-        PieceX = 2
-        PieceY = 0
+        If tab7.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 0, plateaucs)
+            MaJplateau()
+            tab7.BackColor() = Color.Transparent
+        Else
+            PieceX = 2
+            PieceY = 0
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab8_Click(sender As Object, e As EventArgs) Handles tab8.Click
-        pieceSelec = tab8
-        PieceX = 2
-        PieceY = 1
+        If tab8.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 1, plateaucs)
+            MaJplateau()
+            tab8.BackColor() = Color.Transparent
+        Else
+            PieceX = 2
+            PieceY = 1
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab9_Click(sender As Object, e As EventArgs) Handles tab9.Click
-        pieceSelec = tab9
-        PieceX = 2
-        PieceY = 2
+        If tab9.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 2, plateaucs)
+            MaJplateau()
+            tab9.BackColor() = Color.Transparent
+        Else
+            PieceX = 2
+            PieceY = 2
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab10_Click(sender As Object, e As EventArgs) Handles tab10.Click
-        pieceSelec = tab10
-        PieceX = 3
-        PieceY = 0
+        If tab10.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 0, plateaucs)
+            MaJplateau()
+            tab10.BackColor() = Color.Transparent
+        Else
+            PieceX = 3
+            PieceY = 0
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab11_Click(sender As Object, e As EventArgs) Handles tab11.Click
-        pieceSelec = tab11
-        PieceX = 3
-        PieceY = 1
+        If tab11.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 1, plateaucs)
+            MaJplateau()
+            tab11.BackColor() = Color.Transparent
+        Else
+            PieceX = 3
+            PieceY = 1
+            DeplacementPossible()
+        End If
     End Sub
+
     Private Sub tab12_Click(sender As Object, e As EventArgs) Handles tab12.Click
-        pieceSelec = tab12
-        PieceX = 3
-        PieceY = 2
+        If tab12.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 2, plateaucs)
+            MaJplateau()
+            tab12.BackColor() = Color.Transparent
+        Else
+            PieceX = 3
+            PieceY = 2
+            DeplacementPossible()
+        End If
     End Sub
 
 #End Region

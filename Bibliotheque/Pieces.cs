@@ -18,7 +18,7 @@ namespace Bibliotheque
         private bool retour = false;
 
         // Constructeur
-        public Pieces(int _posX, int _posY,int _numJ,string _img)
+        protected Pieces(int _posX, int _posY,int _numJ,string _img)
         {
             positionX = _posX;
             positionY = _posY;
@@ -59,13 +59,14 @@ namespace Bibliotheque
 
         // Méthode
 
-        public int[,] CaseAccesible(Plateau plat)
+        public virtual int[,] CaseAccesible(Plateau plat)
         {
-            InitTableau();
+            int[,] caseAccesible = new int[4, 3];
             return caseAccesible;
         }
         public int[,] InitTableau()
         {
+            int[,] caseAccesible = new int[4, 3];
             for (int i = 0; i == 3; i++)
             {
                 for (int j = 0; j == 2; j++)
