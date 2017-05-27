@@ -40,8 +40,8 @@ Partial Class Menu
         '
         'BtnPartie
         '
-        Me.BtnPartie.Location = New System.Drawing.Point(465, 370)
-        Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnPartie.Location = New System.Drawing.Point(369, 341)
+        Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnPartie.Name = "BtnPartie"
         Me.BtnPartie.Size = New System.Drawing.Size(160, 49)
         Me.BtnPartie.TabIndex = 4
@@ -50,8 +50,8 @@ Partial Class Menu
         '
         'BtnReg
         '
-        Me.BtnReg.Location = New System.Drawing.Point(465, 427)
-        Me.BtnReg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnReg.Location = New System.Drawing.Point(369, 398)
+        Me.BtnReg.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnReg.Name = "BtnReg"
         Me.BtnReg.Size = New System.Drawing.Size(160, 49)
         Me.BtnReg.TabIndex = 5
@@ -60,8 +60,8 @@ Partial Class Menu
         '
         'BtnQuit
         '
-        Me.BtnQuit.Location = New System.Drawing.Point(465, 544)
-        Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnQuit.Location = New System.Drawing.Point(369, 515)
+        Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnQuit.Name = "BtnQuit"
         Me.BtnQuit.Size = New System.Drawing.Size(160, 49)
         Me.BtnQuit.TabIndex = 6
@@ -72,16 +72,15 @@ Partial Class Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1045, 692)
+        Me.ClientSize = New System.Drawing.Size(882, 653)
         Me.Controls.Add(Me.BtnQuit)
         Me.Controls.Add(Me.BtnReg)
         Me.Controls.Add(Me.BtnPartie)
         Me.Controls.Add(Me.lblMessage)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Menu"
         Me.Text = "Yokai No Mori"
         Me.ResumeLayout(False)
