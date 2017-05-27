@@ -2,10 +2,10 @@
 
     Dim _nomj1, _nomj2 As String
     Private Sub BtnConf_Click(sender As Object, e As EventArgs) Handles BtnConf.Click
-
         _nomj1 = TextBoxj1.Text
         _nomj2 = TextBoxj2.Text
         Plateau.Show()
+        Ihm_Winform_VB.Menu.Close()
         Me.Close()
     End Sub
 

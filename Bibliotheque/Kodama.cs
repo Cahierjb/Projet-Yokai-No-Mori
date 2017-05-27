@@ -8,11 +8,12 @@ namespace Bibliotheque
     public class Kodama : Pieces
     {
 
-        public Kodama(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
+        public Kodama(int _posX, int _posY, int _numJ,string _img) : base(_posX, _posY, _numJ,_img)
         {
         }
+
         // Méthode
-        public int[,] CaseAccesible(Plateau plat)
+        public override int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 
@@ -32,6 +33,7 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
+
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
 
     }

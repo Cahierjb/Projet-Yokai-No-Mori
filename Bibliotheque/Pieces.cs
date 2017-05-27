@@ -11,18 +11,19 @@ namespace Bibliotheque
         protected int positionX;
         protected int positionY;
         private int numJoueur;
-        protected int[,] caseAccesible = new int[3, 2];
-
+        protected string image;
+        protected int[,] caseAccesible = new int[4, 3];
         private int compteur = 0;
         private bool aller = false;
         private bool retour = false;
 
         // Constructeur
-        public Pieces(int _posX, int _posY,int _numJ)
+        protected Pieces(int _posX, int _posY,int _numJ,string _img)
         {
             positionX = _posX;
             positionY = _posY;
             numJoueur = _numJ;
+            image = _img;
         }
 
         // Propriétés
@@ -53,10 +54,16 @@ namespace Bibliotheque
             get { return numJoueur; }
             set { if (value > 0 && value < 3) numJoueur = value; }
         }
-
+        public string Image { get { return image; } }
         public int Compteur { get; set; }
 
         // Méthode
+
+        public virtual int[,] CaseAccesible(Plateau plat)
+        {
+            int[,] caseAccesible = new int[4, 3];
+            return caseAccesible;
+        }
         public int[,] InitTableau()
         {
             int[,] caseAccesible = new int[4, 3];

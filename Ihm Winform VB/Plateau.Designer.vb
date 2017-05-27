@@ -41,6 +41,7 @@ Partial Class Plateau
         Me.tab12 = New System.Windows.Forms.PictureBox()
         Me.tab11 = New System.Windows.Forms.PictureBox()
         Me.tab10 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.tab1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tab2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tab3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,6 +54,7 @@ Partial Class Plateau
         CType(Me.tab12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tab11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tab10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tourj1
@@ -221,6 +223,15 @@ Partial Class Plateau
         Me.tab10.TabIndex = 17
         Me.tab10.TabStop = False
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Location = New System.Drawing.Point(598, 415)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(90, 90)
+        Me.PictureBox1.TabIndex = 20
+        Me.PictureBox1.TabStop = False
+        '
         'Plateau
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -229,6 +240,7 @@ Partial Class Plateau
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.tab12)
         Me.Controls.Add(Me.tab11)
         Me.Controls.Add(Me.tab10)
@@ -261,6 +273,7 @@ Partial Class Plateau
         CType(Me.tab12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tab11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tab10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -283,4 +296,5 @@ Partial Class Plateau
     Friend WithEvents tab12 As PictureBox
     Friend WithEvents tab11 As PictureBox
     Friend WithEvents tab10 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -7,12 +7,12 @@ namespace Bibliotheque
 {
     public class Koropokkuru : Pieces
     {
-        public Koropokkuru(int _posX, int _posY, int _numJ) : base(_posX, _posY, _numJ)
+        public Koropokkuru(int _posX, int _posY, int _numJ, string _img) : base(_posX, _posY, _numJ,_img)
             {
             }
 
         // Méthode
-        public int[,] CaseAccesible(Plateau plat)
+        public override int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 
