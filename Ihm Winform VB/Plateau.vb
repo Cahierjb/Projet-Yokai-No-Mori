@@ -13,15 +13,15 @@ Public Class Plateau
 
 
 
-    Dim tanuj1 As New Tanuki(3, 2, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim koroj1 As New Koropokkuru(3, 1, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim kitsj1 As New Kitsune(3, 0, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim kodj1 As New Kodama(2, 1, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
+    Dim tanuj1 As New Tanuki(3, 2, 1, "tanuki.jpg")
+    Dim koroj1 As New Koropokkuru(3, 1, 1, "koro.jpg")
+    Dim kitsj1 As New Kitsune(3, 0, 1, "kitsune.jpg")
+    Dim kodj1 As New Kodama(2, 1, 1, "kodama.jpg")
 
-    Dim tanuj2 As New Tanuki(0, 0, 2, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim koroj2 As New Koropokkuru(0, 1, 2, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim kitsj2 As New Kitsune(0, 2, 2, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
-    Dim kodj2 As New Kodama(1, 1, 2, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
+    Dim tanuj2 As New Tanuki(0, 0, 2, "tanuki.jpg")
+    Dim koroj2 As New Koropokkuru(0, 1, 2, "koro.jpg")
+    Dim kitsj2 As New Kitsune(0, 2, 2, "kitsune.jpg")
+    Dim kodj2 As New Kodama(1, 1, 2, "kodama.jpg")
 
     Private Sub InitTabPlateau()
         tabplateau(0, 0) = tab1
