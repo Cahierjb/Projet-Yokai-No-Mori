@@ -14,7 +14,7 @@ namespace Bibliotheque
         }
 
         // Méthode
-        public int[,] CaseAccesible(Plateau plat)
+        public override int[,] CaseAccesible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 
