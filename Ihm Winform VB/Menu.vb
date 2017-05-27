@@ -4,12 +4,8 @@ Public Class Menu
 
     Dim rep
 
-
-
     Private Sub BtnPartie_Click(sender As Object, e As EventArgs) Handles BtnPartie.Click
-
         Profils.Show()
-        Me.Hide()
     End Sub
 
     Private Sub BtnReg_Click(sender As Object, e As EventArgs) Handles BtnReg.Click

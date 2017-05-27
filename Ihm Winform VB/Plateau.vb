@@ -5,10 +5,12 @@ Public Class Plateau
     Dim Joueur2 As InfoJoueur
     Dim plateaucs As New Bibliotheque.Plateau
     Dim tabplateau(3, 2) As PictureBox
-    Dim piece As Boolean
     Dim PieceX As Integer
     Dim PieceY As Integer
     Dim tourjoueur As Integer
+    Dim action As Boolean
+    Dim nbtours As Integer
+
 
 
     Dim tanuj1 As New Tanuki(3, 2, 1, "C:\Users\Jean-Baptiste\Pictures\ancien steam.PNG")
@@ -34,31 +36,26 @@ Public Class Plateau
         tabplateau(3, 0) = tab10
         tabplateau(3, 1) = tab11
         tabplateau(3, 2) = tab12
-
         MaJplateau()
-        'tabplateau(0, 0).Load(tanuj1.Image())
-        'tabplateau(0, 1).Load(koroj1.Image())
-        'tabplateau(0, 2).Load(kitsj1.Image())
-        'tabplateau(1, 1).Load(kodj1.Image())
-        'tabplateau(2, 1).Load(tanuj2.Image())
-        'tabplateau(3, 0).Load(koroj2.Image())
-        'tabplateau(3, 1).Load(kitsj2.Image())
-        'tabplateau(3, 2).Load(kodj2.Image())
-
 
     End Sub
 
     Private Sub MaJplateau()
-        For i = 0 To 3
-            For j = 0 To 2
-                If plateaucs.Terrain(i, j) Is Nothing Then
-                    tabplateau(i, j).Image() = Nothing
-                    tabplateau(i, j).BackColor() = Color.Transparent
-                Else
-                    tabplateau(i, j).Load(plateaucs.Terrain(i, j).Image())
-                End If
-            Next j
-        Next i
+        If (plateaucs.Findepartie() = 0) Then
+            For i = 0 To 3
+                For j = 0 To 2
+                    If plateaucs.Terrain(i, j) Is Nothing Then
+                        tabplateau(i, j).Image() = Nothing
+                        tabplateau(i, j).BackColor() = Color.Transparent
+                    Else
+                        tabplateau(i, j).Load(plateaucs.Terrain(i, j).Image())
+                    End If
+                Next j
+            Next i
+        Else
+            Me.Enabled = False
+        End If
+
     End Sub
 
     Private Sub DeplacementPossible()
@@ -75,11 +72,16 @@ Public Class Plateau
     End Sub
 
     Private Sub PremierJoueur()
-        If Joueur1.Commence Then
+        plateaucs.initJoueur(Joueur1, Joueur2)
+        If plateaucs.Joueur1.Commence Then
             tourjoueur = 1
-        Else
-            tourjoueur = 2
+            tourj2.Enabled() = False
         End If
+        If plateaucs.Joueur2.Commence Then
+            tourjoueur = 2
+            tourj1.Enabled() = False
+        End If
+        action = True
     End Sub
 
 
@@ -94,33 +96,36 @@ Public Class Plateau
         plateaucs.initialisation(tanuj1, tanuj2, kitsj1, kitsj2, koroj1, koroj2, kodj1, kodj2)
         InitTabPlateau()
         PremierJoueur()
-
-
-
-
-
     End Sub
 
     Private Sub tourj1_Click(sender As Object, e As EventArgs) Handles tourj1.Click
+        tourj1.Enabled() = False
         tourjoueur = 2
+        action = True
+        tourj2.Enabled() = True
+        nbtours += 1
     End Sub
 
     Private Sub tourj2_Click(sender As Object, e As EventArgs) Handles tourj2.Click
+        tourj2.Enabled() = False
         tourjoueur = 1
+        action = True
+        tourj1.Enabled() = True
     End Sub
 
 #Region "Clique Picture Box"
     Private Sub tab1_Click(sender As Object, e As EventArgs) Handles tab1.Click
-        If tourjoueur = plateaucs.Terrain(PieceX, PieceY).NumJoueur Then
-            If tab1.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
-                MaJplateau()
-                tab1.BackColor() = Color.Transparent
-            End If
+        If tab1.BackColor() = Color.Yellow Then
+            plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
+            MaJplateau()
+            action = False
+            tab1.BackColor() = Color.Transparent
         Else
-            PieceX = 0
-            PieceY = 0
-            DeplacementPossible()
+            If (tourjoueur = plateaucs.Terrain(0, 0).NumJoueur And action) Then
+                PieceX = 0
+                PieceY = 0
+                DeplacementPossible()
+            End If
         End If
     End Sub
 
@@ -128,8 +133,9 @@ Public Class Plateau
         If tab2.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 1, plateaucs)
             MaJplateau()
+            action = False
             tab2.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(0, 1).NumJoueur And action) Then
             PieceX = 0
             PieceY = 1
             DeplacementPossible()
@@ -140,8 +146,9 @@ Public Class Plateau
         If tab3.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 2, plateaucs)
             MaJplateau()
+            action = False
             tab3.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(0, 2).NumJoueur And action) Then
             PieceX = 0
             PieceY = 2
             DeplacementPossible()
@@ -152,8 +159,9 @@ Public Class Plateau
         If tab4.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 0, plateaucs)
             MaJplateau()
+            action = False
             tab4.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(1, 0).NumJoueur And action) Then
             PieceX = 1
             PieceY = 0
             DeplacementPossible()
@@ -164,8 +172,9 @@ Public Class Plateau
         If tab5.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 1, plateaucs)
             MaJplateau()
+            action = False
             tab5.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(1, 1).NumJoueur And action) Then
             PieceX = 1
             PieceY = 1
             DeplacementPossible()
@@ -176,8 +185,9 @@ Public Class Plateau
         If tab6.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 2, plateaucs)
             MaJplateau()
+            action = False
             tab6.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(1, 2).NumJoueur And action) Then
             PieceX = 1
             PieceY = 2
             DeplacementPossible()
@@ -188,8 +198,9 @@ Public Class Plateau
         If tab7.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 0, plateaucs)
             MaJplateau()
+            action = False
             tab7.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(2, 0).NumJoueur And action) Then
             PieceX = 2
             PieceY = 0
             DeplacementPossible()
@@ -200,8 +211,9 @@ Public Class Plateau
         If tab8.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 1, plateaucs)
             MaJplateau()
+            action = False
             tab8.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(2, 1).NumJoueur And action) Then
             PieceX = 2
             PieceY = 1
             DeplacementPossible()
@@ -212,8 +224,9 @@ Public Class Plateau
         If tab9.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 2, plateaucs)
             MaJplateau()
+            action = False
             tab9.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(2, 2).NumJoueur And action) Then
             PieceX = 2
             PieceY = 2
             DeplacementPossible()
@@ -224,8 +237,9 @@ Public Class Plateau
         If tab10.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 0, plateaucs)
             MaJplateau()
+            action = False
             tab10.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(3, 0).NumJoueur And action) Then
             PieceX = 3
             PieceY = 0
             DeplacementPossible()
@@ -236,8 +250,9 @@ Public Class Plateau
         If tab11.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 1, plateaucs)
             MaJplateau()
+            action = False
             tab11.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(3, 1).NumJoueur And action) Then
             PieceX = 3
             PieceY = 1
             DeplacementPossible()
@@ -248,8 +263,9 @@ Public Class Plateau
         If tab12.BackColor() = Color.Yellow Then
             plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 2, plateaucs)
             MaJplateau()
+            action = False
             tab12.BackColor() = Color.Transparent
-        Else
+        ElseIf (tourjoueur = plateaucs.Terrain(3, 2).NumJoueur And action) Then
             PieceX = 3
             PieceY = 2
             DeplacementPossible()

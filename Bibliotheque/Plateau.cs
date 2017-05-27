@@ -45,7 +45,6 @@ namespace Bibliotheque
         //Methodes
         public Pieces[,] initialisation(Tanuki tanuj1,Tanuki tanuj2,Kitsune kitsj1,Kitsune kitsj2,Koropokkuru koroj1, Koropokkuru koroj2, Kodama kodj1,Kodama kodj2)//instancie les pieces et les place a leur position initiale, vide également les reserves des joueurs
         {
-            initJoueur(Joueur1,Joueur2);
             for (int i = 0; i == 2; i++) ReserveJ1[i] = null;
             for (int i = 0; i == 2; i++) ReserveJ2[i] = null;
             for (int i = 0; i == 3; i++)
@@ -115,7 +114,7 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            else if (terrain[newx, newy].NumJoueur == 1)//cas ou la case appartient au joueur adverse j1    
+            else if (terrain[newx, newy].NumJoueur == 1 && !(typepiece == 3))//cas ou la case appartient au joueur adverse j1    
             {
                 terrain[newx, newy].NumJoueur = 2;//on change le joueur propriétaire de la piece
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
@@ -127,7 +126,7 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;//puis on place la piece du j2 dans la case
                 Deplacement = true;
             }
-            else if (terrain[newx, newy].NumJoueur == 2)//cas ou la case appartient au joueur adverse j2
+            else if (terrain[newx, newy].NumJoueur == 2 && !(typepiece == 3))//cas ou la case appartient au joueur adverse j2
             {
                 terrain[newx, newy].NumJoueur = 1;
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
@@ -144,6 +143,8 @@ namespace Bibliotheque
                 findepartie = 1;
                 if(piece.NumJoueur == 1) { joueur1.Gagnant = true; }
                 else { joueur2.Gagnant = true; }
+                terrain[newx, newy] = piece;
+                terrain[AncienePosition[0], AncienePosition[1]] = null;
             }
       
 
@@ -208,13 +209,16 @@ namespace Bibliotheque
             }
         }
 
-        private void initJoueur(InfoJoueur j1,InfoJoueur j2)
+        public void initJoueur(InfoJoueur j1,InfoJoueur j2)
         {
             joueur1 = j1;
             joueur2 = j2;
-            Random rand = new Random(2);
-            if ((rand.Next(1, 3) == 1))
+            Random rand = new Random();
+            var num = rand.Next(1, 3);
+            if (num == 1)
                 joueur1.Commence = true;
+            if (num == 2)
+                joueur2.Commence = true;
         }
 
         #region Methode de Test
