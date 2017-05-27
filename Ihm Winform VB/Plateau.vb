@@ -6,7 +6,7 @@ Public Class Plateau
         Labelj2.Text = Profils.NameJ2()
 
         Dim tabplateau(2, 3) As Pieces
-        Dim plateaucs As New Bibliotheque.Plateau
+        Dim plateaucs(2, 3) As  Bibliotheque.Plateau
 
         Dim tanuj1 As New Tanuki(3, 2, 1)
         Dim koroj1 As New Koropokkuru(3, 1, 1)

@@ -24,78 +24,71 @@ Partial Class Menu
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
         Me.lblMessage = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnPartie = New System.Windows.Forms.Button()
         Me.BtnReg = New System.Windows.Forms.Button()
         Me.BtnQuit = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblMessage
         '
         Me.lblMessage.AutoSize = True
-        Me.lblMessage.Location = New System.Drawing.Point(16, 53)
+        Me.lblMessage.Location = New System.Drawing.Point(21, 65)
+        Me.lblMessage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(0, 13)
+        Me.lblMessage.Size = New System.Drawing.Size(0, 17)
         Me.lblMessage.TabIndex = 2
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(-1, -3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(784, 568)
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
         '
         'BtnPartie
         '
-        Me.BtnPartie.Location = New System.Drawing.Point(349, 301)
+        Me.BtnPartie.Location = New System.Drawing.Point(465, 370)
+        Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnPartie.Name = "BtnPartie"
-        Me.BtnPartie.Size = New System.Drawing.Size(120, 40)
+        Me.BtnPartie.Size = New System.Drawing.Size(160, 49)
         Me.BtnPartie.TabIndex = 4
         Me.BtnPartie.Text = "Jouer une partie"
         Me.BtnPartie.UseVisualStyleBackColor = True
         '
         'BtnReg
         '
-        Me.BtnReg.Location = New System.Drawing.Point(349, 347)
+        Me.BtnReg.Location = New System.Drawing.Point(465, 427)
+        Me.BtnReg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnReg.Name = "BtnReg"
-        Me.BtnReg.Size = New System.Drawing.Size(120, 40)
+        Me.BtnReg.Size = New System.Drawing.Size(160, 49)
         Me.BtnReg.TabIndex = 5
         Me.BtnReg.Text = "Règles du jeu"
         Me.BtnReg.UseVisualStyleBackColor = True
         '
         'BtnQuit
         '
-        Me.BtnQuit.Location = New System.Drawing.Point(349, 442)
+        Me.BtnQuit.Location = New System.Drawing.Point(465, 544)
+        Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnQuit.Name = "BtnQuit"
-        Me.BtnQuit.Size = New System.Drawing.Size(120, 40)
+        Me.BtnQuit.Size = New System.Drawing.Size(160, 49)
         Me.BtnQuit.TabIndex = 6
         Me.BtnQuit.Text = "Quitter"
         Me.BtnQuit.UseVisualStyleBackColor = True
         '
         'Menu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1045, 692)
         Me.Controls.Add(Me.BtnQuit)
         Me.Controls.Add(Me.BtnReg)
         Me.Controls.Add(Me.BtnPartie)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblMessage)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Menu"
         Me.Text = "Yokai No Mori"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblMessage As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnPartie As Button
     Friend WithEvents BtnReg As Button
     Friend WithEvents BtnQuit As Button
