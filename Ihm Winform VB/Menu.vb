@@ -1,6 +1,6 @@
 ﻿Imports Bibliotheque
 
-Public Class Menu
+Public Class Menu_princ
 
     Dim rep
 

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Menu
+Partial Class Menu_princ
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,7 +22,7 @@ Partial Class Menu
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu_princ))
         Me.lblMessage = New System.Windows.Forms.Label()
         Me.BtnPartie = New System.Windows.Forms.Button()
         Me.BtnReg = New System.Windows.Forms.Button()
@@ -40,7 +40,7 @@ Partial Class Menu
         '
         'BtnPartie
         '
-        Me.BtnPartie.Location = New System.Drawing.Point(465, 370)
+        Me.BtnPartie.Location = New System.Drawing.Point(369, 341)
         Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnPartie.Name = "BtnPartie"
         Me.BtnPartie.Size = New System.Drawing.Size(160, 49)
@@ -50,7 +50,7 @@ Partial Class Menu
         '
         'BtnReg
         '
-        Me.BtnReg.Location = New System.Drawing.Point(465, 427)
+        Me.BtnReg.Location = New System.Drawing.Point(369, 398)
         Me.BtnReg.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnReg.Name = "BtnReg"
         Me.BtnReg.Size = New System.Drawing.Size(160, 49)
@@ -60,10 +60,7 @@ Partial Class Menu
         '
         'BtnQuit
         '
-        Me.BtnQuit.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnQuit.Location = New System.Drawing.Point(465, 544)
+        Me.BtnQuit.Location = New System.Drawing.Point(369, 515)
         Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnQuit.Name = "BtnQuit"
         Me.BtnQuit.Size = New System.Drawing.Size(160, 49)
@@ -71,21 +68,20 @@ Partial Class Menu
         Me.BtnQuit.Text = "Quitter"
         Me.BtnQuit.UseVisualStyleBackColor = True
         '
-        'Menu
+        'Menu_princ
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1045, 692)
+        Me.ClientSize = New System.Drawing.Size(882, 653)
         Me.Controls.Add(Me.BtnQuit)
         Me.Controls.Add(Me.BtnReg)
         Me.Controls.Add(Me.BtnPartie)
         Me.Controls.Add(Me.lblMessage)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "Menu"
+        Me.Name = "Menu_princ"
         Me.Text = "Yokai No Mori"
         Me.ResumeLayout(False)
         Me.PerformLayout()

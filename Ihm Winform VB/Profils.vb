@@ -5,7 +5,7 @@
         _nomj1 = TextBoxj1.Text
         _nomj2 = TextBoxj2.Text
         Plateau.Show()
-        Ihm_Winform_VB.Menu.Close()
+        Ihm_Winform_VB.Menu_princ.Close()
         Me.Close()
     End Sub
 
