@@ -13,8 +13,8 @@ namespace Bibliotheque
         private Pieces[,] terrain = new Pieces[4, 3];
         private Pieces[] reserveJ1 = new Pieces[3];
         private Pieces[] reserveJ2 = new Pieces[3];
-        private Kodama pointerKod1 = new Kodama(2,1,1, "C:\\Users\\Jean - Baptiste\\Pictures\\ancien steam.PNG");
-        private Kodama pointerKod2 = new Kodama(1,1,2, "C:\\Users\\Jean-Baptiste\\Pictures\\ancien steam.PNG");
+        private Kodama pointerKod1 = new Kodama(2,1,1, "kodama.jpg");
+        private Kodama pointerKod2 = new Kodama(1,1,2, "kodama.jpg");
         private int findepartie = 0;
 
         //Constructeurs
@@ -119,7 +119,7 @@ namespace Bibliotheque
                 terrain[newx, newy].NumJoueur = 2;//on change le joueur propriétaire de la piece
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
                 {
-                    pointerKod2 = new Kodama(terrain[newx, newy].PositionX, terrain[newx, newy].PositionY, terrain[newx, newy].NumJoueur, "C:\\Users\\Jean-Baptiste\\Pictures\\ancien steam.PNG");
+                    pointerKod2 = new Kodama(terrain[newx, newy].PositionX, terrain[newx, newy].PositionY, terrain[newx, newy].NumJoueur, "kodama.jpg");
                     terrain[newx, newy] = pointerKod2;//on verifie s'il sagit d'un kodama samurai, si c'est le cas on le cast en simple kodama
                 }
                 ReserveJ2[typepiece] = terrain[newx, newy];//on stocke la piece du joueur adverse dans la reserve 
@@ -131,7 +131,7 @@ namespace Bibliotheque
                 terrain[newx, newy].NumJoueur = 1;
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
                 {
-                    pointerKod1 = new Kodama(terrain[newx, newy].PositionX, terrain[newx, newy].PositionY, terrain[newx, newy].NumJoueur, "C:\\Users\\Jean-Baptiste\\Pictures\\ancien steam.PNG");
+                    pointerKod1 = new Kodama(terrain[newx, newy].PositionX, terrain[newx, newy].PositionY, terrain[newx, newy].NumJoueur, "kodama.jpg");
                     terrain[newx, newy] = pointerKod1;//on verifie s'il sagit d'un kodama samurai, si c'est le cas on le cast en simple kodama
                 }
                 ReserveJ1[typepiece] = terrain[newx, newy];
@@ -181,13 +181,13 @@ namespace Bibliotheque
             {
                 if (piece.NumJoueur == 1 && piece.PositionX == 0)
                 {
-                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1, "C:\\Users\\Jean-Baptiste\\Pictures\\ancien steam.PNG");
+                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1, "kodama_sam.jpg");
                     PointerKod2 = (Kodama_Samurai)piece;
                     terrain[piece.PositionX, piece.PositionY] = PointerKod2;
                 }
                 else if (piece.NumJoueur == 2 && piece.PositionX == 3)
                 {
-                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 2, "C:\\Users\\Jean-Baptiste\\Pictures\\ancien steam.PNG");
+                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 2, "kodama_sam.jpg");
                     PointerKod1 = (Kodama_Samurai)piece;
                     terrain[piece.PositionX, piece.PositionY] = PointerKod1;
                 }

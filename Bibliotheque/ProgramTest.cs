@@ -15,13 +15,13 @@ namespace Bibliotheque
 
             //Pieces joueurs 1
             Tanuki tanuj1 = new Tanuki(3, 2, 1,"");
-            Koropokkuru koroj1 = new Koropokkuru(3, 1, 1);
-            Kitsune kitsj1 = new Kitsune(3, 0, 1);
+            Koropokkuru koroj1 = new Koropokkuru(3, 1, 1,"");
+            Kitsune kitsj1 = new Kitsune(3, 0, 1, "");
             Kodama kodj1 = PlatTest.PointerKod1;
             //Pieces joueur 2
-            Tanuki tanuj2 = new Tanuki(0, 0, 2);
-            Koropokkuru koroj2 = new Koropokkuru(0, 1, 2);
-            Kitsune kitsj2 = new Kitsune(0, 2, 2);
+            Tanuki tanuj2 = new Tanuki(0, 0, 2, "");
+            Koropokkuru koroj2 = new Koropokkuru(0, 1, 2, "");
+            Kitsune kitsj2 = new Kitsune(0, 2, 2, "");
             Kodama kodj2 = PlatTest.PointerKod2;
             Pieces piece;
             
@@ -33,7 +33,7 @@ namespace Bibliotheque
 
             Console.WriteLine();
 
-            piece = kitsj1;
+            /*piece = kitsj1;
 
             piece.Deplacement(1, 1, PlatTest);
             PlatTest.AfficheTestPlateau();
@@ -67,7 +67,37 @@ namespace Bibliotheque
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
 
+            piece = PlatTest.PointerKod2;*/
 
+            tanuj1.Deplacement(2, 2, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+
+            tanuj1.Deplacement(1, 2, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            tanuj1.Deplacement(1, 1, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            tanuj1.Deplacement(1, 0, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            kodj1.AfficheTestPiece();
+            int[,] caseAccesible = new int[4, 3];
+            caseAccesible = kodj1.CaseAccesible(PlatTest);
+            Console.WriteLine("");
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(caseAccesible[i, j]);
+                }
+                Console.WriteLine("");
+            }
             Console.WriteLine();
             Console.ReadLine();
 

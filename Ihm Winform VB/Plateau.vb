@@ -9,7 +9,6 @@ Public Class Plateau
     Dim PieceY As Integer
     Dim tourjoueur As Integer
     Dim action As Boolean
-    Dim nbtours As Integer
 
 
 
@@ -42,27 +41,32 @@ Public Class Plateau
 
     Private Sub MaJplateau()
         If (plateaucs.Findepartie() = 0) Then
+            For Each element As PictureBox In tabplateau
+                element.BackColor() = Color.Transparent
+            Next
             For i = 0 To 3
                 For j = 0 To 2
                     If plateaucs.Terrain(i, j) Is Nothing Then
                         tabplateau(i, j).Image() = Nothing
-                        tabplateau(i, j).BackColor() = Color.Transparent
                     Else
                         tabplateau(i, j).Load(plateaucs.Terrain(i, j).Image())
+                        tabplateau(i, j).Image() = tabplateau(i, j).Image().GetThumbnailImage(90, 90, Nothing, IntPtr.Zero)
                     End If
                 Next j
             Next i
-        Else
-            Me.Enabled = False
+        ElseIf (plateaucs.Findepartie() > 0) Then
+            Me.Enabled() = False
         End If
 
     End Sub
 
     Private Sub DeplacementPossible()
         MaJplateau()
+        plateaucs.Terrain(PieceX, PieceY).InitTableau()
         For i = 0 To 3
             For j = 0 To 2
                 If plateaucs.Terrain(PieceX, PieceY).CaseAccesible(plateaucs)(i, j) = 1 Then
+                    tabplateau(i, j).Image() = Nothing 'warning
                     tabplateau(i, j).BackColor() = Color.Yellow
                 End If
             Next j
@@ -97,14 +101,15 @@ Public Class Plateau
     End Sub
 
     Private Sub tourj1_Click(sender As Object, e As EventArgs) Handles tourj1.Click
+        MaJplateau()
         tourj1.Enabled() = False
         tourjoueur = 2
         action = True
         tourj2.Enabled() = True
-        nbtours += 1
     End Sub
 
     Private Sub tourj2_Click(sender As Object, e As EventArgs) Handles tourj2.Click
+        MaJplateau()
         tourj2.Enabled() = False
         tourjoueur = 1
         action = True
@@ -116,9 +121,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (action And tourjoueur = plateaucs.Terrain(0, 0).NumJoueur) Then
                 PieceX = 0
                 PieceY = 0
@@ -131,9 +136,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 1, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(0, 1).NumJoueur And action) Then
                 PieceX = 0
                 PieceY = 1
@@ -146,9 +151,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 2, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(0, 2).NumJoueur And action) Then
                 PieceX = 0
                 PieceY = 2
@@ -161,9 +166,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 0, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(1, 0).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 0
@@ -176,9 +181,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 1, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(1, 1).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 1
@@ -191,9 +196,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 2, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(1, 2).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 2
@@ -206,9 +211,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 0, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(2, 0).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 0
@@ -219,11 +224,11 @@ Public Class Plateau
 
     Private Sub tab8_Click(sender As Object, e As EventArgs) Handles tab8.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
-            If tab8.BackColor() = Color.Yellow Then
+            If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 1, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(2, 1).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 1
@@ -236,9 +241,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If tab9.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 2, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(2, 2).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 2
@@ -251,9 +256,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 0, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (Not (plateaucs.Terrain(3, 0) Is Nothing) And tourjoueur = plateaucs.Terrain(3, 0).NumJoueur And action) Then
                 PieceX = 3
                 PieceY = 0
@@ -266,9 +271,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 1, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(3, 1).NumJoueur And action) Then
                 PieceX = 3
                 PieceY = 1
@@ -281,9 +286,9 @@ Public Class Plateau
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
                 plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 2, plateaucs)
+                sender.BackColor() = Color.Transparent
                 MaJplateau()
                 action = False
-                sender.BackColor() = Color.Transparent
             ElseIf (tourjoueur = plateaucs.Terrain(3, 2).NumJoueur) Then
                 PieceX = 3
                 PieceY = 2
