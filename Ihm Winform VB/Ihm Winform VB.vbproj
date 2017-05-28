@@ -50,6 +50,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -73,6 +74,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ecran_match_nul.Designer.vb">
+      <DependentUpon>Ecran_match_nul.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ecran_match_nul.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ecran_victoire.Designer.vb">
+      <DependentUpon>Ecran_victoire.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ecran_victoire.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Menu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +128,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Ecran_match_nul.resx">
+      <DependentUpon>Ecran_match_nul.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ecran_victoire.resx">
+      <DependentUpon>Ecran_victoire.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.vb</DependentUpon>
     </EmbeddedResource>

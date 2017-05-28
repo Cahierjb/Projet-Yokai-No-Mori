@@ -34,25 +34,28 @@ Partial Class Profils
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(14, 186)
+        Me.Label1.Location = New System.Drawing.Point(19, 229)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(91, 13)
+        Me.Label1.Size = New System.Drawing.Size(121, 17)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Nom du joueur 1 :"
         '
         'TextBoxj1
         '
-        Me.TextBoxj1.Location = New System.Drawing.Point(17, 215)
+        Me.TextBoxj1.Location = New System.Drawing.Point(23, 265)
+        Me.TextBoxj1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBoxj1.Name = "TextBoxj1"
-        Me.TextBoxj1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxj1.Size = New System.Drawing.Size(132, 22)
         Me.TextBoxj1.TabIndex = 2
         Me.TextBoxj1.Text = "Joueur 1"
         '
         'TextBoxj2
         '
-        Me.TextBoxj2.Location = New System.Drawing.Point(257, 215)
+        Me.TextBoxj2.Location = New System.Drawing.Point(343, 265)
+        Me.TextBoxj2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBoxj2.Name = "TextBoxj2"
-        Me.TextBoxj2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxj2.Size = New System.Drawing.Size(132, 22)
         Me.TextBoxj2.TabIndex = 4
         Me.TextBoxj2.Text = "Joueur 2"
         '
@@ -60,35 +63,38 @@ Partial Class Profils
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Location = New System.Drawing.Point(266, 186)
+        Me.Label2.Location = New System.Drawing.Point(355, 229)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(91, 13)
+        Me.Label2.Size = New System.Drawing.Size(121, 17)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Nom du joueur 2 :"
         '
         'BtnConf
         '
-        Me.BtnConf.Location = New System.Drawing.Point(141, 205)
+        Me.BtnConf.Location = New System.Drawing.Point(186, 250)
+        Me.BtnConf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnConf.Name = "BtnConf"
-        Me.BtnConf.Size = New System.Drawing.Size(100, 30)
+        Me.BtnConf.Size = New System.Drawing.Size(133, 37)
         Me.BtnConf.TabIndex = 5
         Me.BtnConf.Text = "Confirmer"
         Me.BtnConf.UseVisualStyleBackColor = True
         '
         'Profils
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(384, 262)
+        Me.ClientSize = New System.Drawing.Size(512, 322)
         Me.Controls.Add(Me.BtnConf)
         Me.Controls.Add(Me.TextBoxj2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBoxj1)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Profils"
         Me.Text = "Profils"
         Me.ResumeLayout(False)

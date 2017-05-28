@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Menu
+Partial Class Menu_princ
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,7 +22,7 @@ Partial Class Menu
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu_princ))
         Me.lblMessage = New System.Windows.Forms.Label()
         Me.BtnPartie = New System.Windows.Forms.Button()
         Me.BtnReg = New System.Windows.Forms.Button()
@@ -68,7 +68,7 @@ Partial Class Menu
         Me.BtnQuit.Text = "Quitter"
         Me.BtnQuit.UseVisualStyleBackColor = True
         '
-        'Menu
+        'Menu_princ
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -81,7 +81,7 @@ Partial Class Menu
         Me.Controls.Add(Me.BtnPartie)
         Me.Controls.Add(Me.lblMessage)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "Menu"
+        Me.Name = "Menu_princ"
         Me.Text = "Yokai No Mori"
         Me.ResumeLayout(False)
         Me.PerformLayout()
