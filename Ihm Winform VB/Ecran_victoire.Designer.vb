@@ -35,7 +35,7 @@ Partial Class Ecran_victoire
         '
         Me.nom_joueur.AutoSize = True
         Me.nom_joueur.BackColor = System.Drawing.Color.Transparent
-        Me.nom_joueur.Location = New System.Drawing.Point(173, 293)
+        Me.nom_joueur.Location = New System.Drawing.Point(148, 293)
         Me.nom_joueur.Name = "nom_joueur"
         Me.nom_joueur.Size = New System.Drawing.Size(83, 17)
         Me.nom_joueur.TabIndex = 0
@@ -45,7 +45,7 @@ Partial Class Ecran_victoire
         '
         Me.type_victoire.AutoSize = True
         Me.type_victoire.BackColor = System.Drawing.Color.Transparent
-        Me.type_victoire.Location = New System.Drawing.Point(292, 293)
+        Me.type_victoire.Location = New System.Drawing.Point(214, 293)
         Me.type_victoire.Name = "type_victoire"
         Me.type_victoire.Size = New System.Drawing.Size(88, 17)
         Me.type_victoire.TabIndex = 1
