@@ -13,22 +13,22 @@ namespace Bibliotheque
         }
 
         // Méthode
-        public override int[,] CaseAccesible(Plateau plat)
+        public override int[,] CaseAccessible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 
             if (this.NumJoueur == 1)
             {
-                if (plat.CheckCase(PositionX + 0, PositionY + 1, this.NumJoueur))
+                if (plat.CheckCase(PositionX-1, PositionY, this.NumJoueur))
                 {
-                    caseAccesible[PositionX + 0, PositionY + 1] = 1;
+                    caseAccesible[PositionX-1, PositionY] = 1;
                 }
             }
-            if (this.NumJoueur == 2)
+            else if (this.NumJoueur == 2)
             {
-                if (plat.CheckCase(PositionX + 0, PositionY - 1, this.NumJoueur))
+                if (plat.CheckCase(PositionX+1, PositionY, this.NumJoueur))
                 {
-                    caseAccesible[PositionX + 0, PositionY - 1] = 1;
+                    caseAccesible[PositionX+1, PositionY] = 1;
                 }
             }
             return caseAccesible;

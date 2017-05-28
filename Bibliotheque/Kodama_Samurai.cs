@@ -14,7 +14,7 @@ namespace Bibliotheque
         }
 
         // Méthode
-        public int[,] CaseAccesible(Plateau plat)
+        public override int[,] CaseAccessible(Plateau plat)
         {
             int[,] caseAccesible = this.InitTableau();
 
@@ -51,9 +51,9 @@ namespace Bibliotheque
                 {
                     caseAccesible[PositionX + 1, PositionY - 1] = 1;
                 }
-                if (plat.CheckCase(PositionX + 0, PositionY + 1, this.NumJoueur))
+                if (plat.CheckCase(PositionX, PositionY + 1, this.NumJoueur))
                 {
-                    caseAccesible[PositionX + 0, PositionY + 1] = 1;
+                    caseAccesible[PositionX, PositionY + 1] = 1;
                 }
                 if (plat.CheckCase(PositionX - 1, PositionY - 1, this.NumJoueur))
                 {
