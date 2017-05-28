@@ -41,7 +41,7 @@ Partial Class Menu
         'BtnPartie
         '
         Me.BtnPartie.Location = New System.Drawing.Point(465, 370)
-        Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnPartie.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnPartie.Name = "BtnPartie"
         Me.BtnPartie.Size = New System.Drawing.Size(160, 49)
         Me.BtnPartie.TabIndex = 4
@@ -51,7 +51,7 @@ Partial Class Menu
         'BtnReg
         '
         Me.BtnReg.Location = New System.Drawing.Point(465, 427)
-        Me.BtnReg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnReg.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnReg.Name = "BtnReg"
         Me.BtnReg.Size = New System.Drawing.Size(160, 49)
         Me.BtnReg.TabIndex = 5
@@ -60,8 +60,11 @@ Partial Class Menu
         '
         'BtnQuit
         '
+        Me.BtnQuit.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnQuit.Location = New System.Drawing.Point(465, 544)
-        Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnQuit.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnQuit.Name = "BtnQuit"
         Me.BtnQuit.Size = New System.Drawing.Size(160, 49)
         Me.BtnQuit.TabIndex = 6
@@ -81,7 +84,7 @@ Partial Class Menu
         Me.Controls.Add(Me.BtnReg)
         Me.Controls.Add(Me.BtnPartie)
         Me.Controls.Add(Me.lblMessage)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Menu"
         Me.Text = "Yokai No Mori"
         Me.ResumeLayout(False)

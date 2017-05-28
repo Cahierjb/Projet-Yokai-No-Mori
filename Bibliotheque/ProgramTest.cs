@@ -27,68 +27,30 @@ namespace Bibliotheque
             
   
 
-            PlatTest.initialisation(tanuj1,tanuj2,kitsj1,kitsj2,koroj1,koroj2,kodj1,kodj2);
+            //PlatTest.initialisation(tanuj1,tanuj2,kitsj1,kitsj2,koroj1,koroj2,kodj1,kodj2);
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
 
             Console.WriteLine();
 
-            /*piece = kitsj1;
+           
+
+            kodj2.Deplacement(3, 0, PlatTest);
+            PlatTest.AfficheTestPlateau();
+            PlatTest.AfficheReserve();
+
+            piece = PlatTest.PointerKod1;
 
             piece.Deplacement(1, 1, PlatTest);
             PlatTest.AfficheTestPlateau();
             PlatTest.AfficheReserve();
 
-            piece = PlatTest.PointerKod2;
-
-            piece.Parachutage(3, 0,PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            piece.Deplacement(0, 0, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            piece = PlatTest.PointerKod2;
-
-            piece.Deplacement(1, 0, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            piece = kitsj2;
-
-            piece.Deplacement(1, 0, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            piece = PlatTest.PointerKod2;
-
-            piece.Parachutage(3, 0, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            piece = PlatTest.PointerKod2;*/
-
-            tanuj1.Deplacement(2, 2, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
 
 
-            tanuj1.Deplacement(1, 2, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
 
-            tanuj1.Deplacement(1, 1, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
 
-            tanuj1.Deplacement(1, 0, PlatTest);
-            PlatTest.AfficheTestPlateau();
-            PlatTest.AfficheReserve();
-
-            kodj1.AfficheTestPiece();
             int[,] caseAccesible = new int[4, 3];
-            caseAccesible = kodj1.CaseAccesible(PlatTest);
+            caseAccesible = piece.CaseAccessible(PlatTest);
             Console.WriteLine("");
             for (int i = 0; i < 4; i++)
             {

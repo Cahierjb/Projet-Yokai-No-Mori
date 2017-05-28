@@ -5,10 +5,13 @@ Public Class Plateau
     Dim Joueur2 As InfoJoueur
     Dim plateaucs As New Bibliotheque.Plateau
     Dim tabplateau(3, 2) As PictureBox
+    Dim ReserveJ1(3) As PictureBox
+    Dim ReserveJ2(3) As PictureBox
     Dim PieceX As Integer
     Dim PieceY As Integer
     Dim tourjoueur As Integer
     Dim action As Boolean
+    Dim Piecepara As Pieces
 
 
 
@@ -35,15 +38,21 @@ Public Class Plateau
         tabplateau(3, 0) = tab10
         tabplateau(3, 1) = tab11
         tabplateau(3, 2) = tab12
+        ReserveJ1(0) = Resj1_1
+        ReserveJ1(1) = Resj1_2
+        ReserveJ1(2) = Resj1_3
+        ReserveJ2(0) = Resj2_1
+        ReserveJ2(1) = Resj2_2
+        ReserveJ2(2) = Resj2_3
         MaJplateau()
-
     End Sub
 
     Private Sub MaJplateau()
-        If (plateaucs.Findepartie() = 0) Then
+        Piecepara = Nothing
+        If (plateaucs.Findepartie = 0) Then
             For Each element As PictureBox In tabplateau
                 element.BackColor() = Color.Transparent
-            Next
+            Next element
             For i = 0 To 3
                 For j = 0 To 2
                     If plateaucs.Terrain(i, j) Is Nothing Then
@@ -57,8 +66,27 @@ Public Class Plateau
                     End If
                 Next j
             Next i
-        ElseIf (plateaucs.Findepartie() > 0) Then
-            Me.Enabled() = False
+            For y = 0 To 2
+                If (plateaucs.ReserveJ1(y) Is Nothing) Then
+                    ReserveJ1(y).Image() = Nothing
+                Else
+                    ReserveJ1(y).Load(plateaucs.ReserveJ1(y).Image())
+                    ReserveJ1(y).Image() = ReserveJ1(y).Image().GetThumbnailImage(80, 80, Nothing, IntPtr.Zero)
+                End If
+                If (plateaucs.ReserveJ2(y) Is Nothing) Then
+                    ReserveJ2(y).Image() = Nothing
+                Else
+                    ReserveJ2(y).Load(plateaucs.ReserveJ2(y).Image())
+                    ReserveJ2(y).Image() = ReserveJ2(y).Image().GetThumbnailImage(80, 80, Nothing, IntPtr.Zero)
+                End If
+            Next y
+        End If
+        If (plateaucs.Findepartie > 0) Then
+            For Each element As PictureBox In tabplateau
+                element.BackColor() = Color.Transparent
+            Next element
+            'Me.Enabled() = False
+            Me.Close()
         End If
 
     End Sub
@@ -68,8 +96,19 @@ Public Class Plateau
         plateaucs.Terrain(PieceX, PieceY).InitTableau()
         For i = 0 To 3
             For j = 0 To 2
-                If plateaucs.Terrain(PieceX, PieceY).CaseAccesible(plateaucs)(i, j) = 1 Then
+                If plateaucs.Terrain(PieceX, PieceY).CaseAccessible(plateaucs)(i, j) = 1 Then
                     tabplateau(i, j).Image() = Nothing 'warning
+                    tabplateau(i, j).BackColor() = Color.Yellow
+                End If
+            Next j
+        Next i
+    End Sub
+
+    Private Sub ParachutagePossible()
+        MaJplateau()
+        For i = 0 To 3
+            For j = 0 To 2
+                If plateaucs.Terrain(i, j) Is Nothing Then
                     tabplateau(i, j).BackColor() = Color.Yellow
                 End If
             Next j
@@ -81,14 +120,16 @@ Public Class Plateau
         If plateaucs.Joueur1.Commence Then
             tourjoueur = 1
             tourj2.Enabled() = False
+            MessageBox.Show(Joueur1.NomJoueur + " est le joueur qui commence !", "Premier Joueur :", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         If plateaucs.Joueur2.Commence Then
             tourjoueur = 2
             tourj1.Enabled() = False
+            MessageBox.Show(Joueur2.NomJoueur + " est le joueur qui commence !", "Premier Joueur :", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         action = True
-    End Sub
 
+    End Sub
 
     Private Sub Plateau_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Labelj1.Text = Profils.NameJ1()
@@ -119,14 +160,20 @@ Public Class Plateau
         tourj1.Enabled() = True
     End Sub
 
-#Region "Clique Picture Box"
+#Region "Clique Picture Box Plateau"
     Private Sub tab1_Click(sender As Object, e As EventArgs) Handles tab1.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(0, 0, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 0, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (action And tourjoueur = plateaucs.Terrain(0, 0).NumJoueur) Then
                 PieceX = 0
                 PieceY = 0
@@ -138,10 +185,16 @@ Public Class Plateau
     Private Sub tab2_Click(sender As Object, e As EventArgs) Handles tab2.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 1, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(0, 1, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 1, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(0, 1).NumJoueur And action) Then
                 PieceX = 0
                 PieceY = 1
@@ -153,10 +206,16 @@ Public Class Plateau
     Private Sub tab3_Click(sender As Object, e As EventArgs) Handles tab3.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 2, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(0, 2, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(0, 2, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(0, 2).NumJoueur And action) Then
                 PieceX = 0
                 PieceY = 2
@@ -168,10 +227,16 @@ Public Class Plateau
     Private Sub tab4_Click(sender As Object, e As EventArgs) Handles tab4.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 0, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(1, 0, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 0, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(1, 0).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 0
@@ -183,10 +248,16 @@ Public Class Plateau
     Private Sub tab5_Click(sender As Object, e As EventArgs) Handles tab5.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 1, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(1, 1, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 1, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(1, 1).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 1
@@ -198,10 +269,16 @@ Public Class Plateau
     Private Sub tab6_Click(sender As Object, e As EventArgs) Handles tab6.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 2, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(1, 2, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(1, 2, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(1, 2).NumJoueur And action) Then
                 PieceX = 1
                 PieceY = 2
@@ -213,10 +290,16 @@ Public Class Plateau
     Private Sub tab7_Click(sender As Object, e As EventArgs) Handles tab7.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 0, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(2, 0, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 0, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(2, 0).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 0
@@ -228,10 +311,16 @@ Public Class Plateau
     Private Sub tab8_Click(sender As Object, e As EventArgs) Handles tab8.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 1, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(2, 1, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 1, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(2, 1).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 1
@@ -243,10 +332,16 @@ Public Class Plateau
     Private Sub tab9_Click(sender As Object, e As EventArgs) Handles tab9.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If tab9.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 2, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(2, 2, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(2, 2, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(2, 2).NumJoueur And action) Then
                 PieceX = 2
                 PieceY = 2
@@ -258,10 +353,16 @@ Public Class Plateau
     Private Sub tab10_Click(sender As Object, e As EventArgs) Handles tab10.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 0, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(3, 0, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 0, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (Not (plateaucs.Terrain(3, 0) Is Nothing) And tourjoueur = plateaucs.Terrain(3, 0).NumJoueur And action) Then
                 PieceX = 3
                 PieceY = 0
@@ -273,10 +374,16 @@ Public Class Plateau
     Private Sub tab11_Click(sender As Object, e As EventArgs) Handles tab11.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 1, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(3, 1, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 1, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(3, 1).NumJoueur And action) Then
                 PieceX = 3
                 PieceY = 1
@@ -288,10 +395,16 @@ Public Class Plateau
     Private Sub tab12_Click(sender As Object, e As EventArgs) Handles tab12.Click
         If Not sender.image() Is Nothing Or sender.BackColor() = Color.Yellow Then
             If sender.BackColor() = Color.Yellow Then
-                plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 2, plateaucs)
+                If Not Piecepara Is Nothing And sender.Image() Is Nothing Then
+                    Piecepara.Parachutage(3, 2, plateaucs)
+                    Piecepara = Nothing
+                    action = False
+                ElseIf Piecepara Is Nothing Then
+                    plateaucs.Terrain(PieceX, PieceY).Deplacement(3, 2, plateaucs)
+                    action = False
+                End If
                 sender.BackColor() = Color.Transparent
                 MaJplateau()
-                action = False
             ElseIf (tourjoueur = plateaucs.Terrain(3, 2).NumJoueur) Then
                 PieceX = 3
                 PieceY = 2
@@ -302,4 +415,43 @@ Public Class Plateau
 
 #End Region
 
+
+#Region "Clique Picture Box Reserve"
+    Private Sub Resj1_1_Click(sender As Object, e As EventArgs) Handles Resj1_1.Click
+        If Not plateaucs.ReserveJ1(0) Is Nothing And action And tourjoueur = 1 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ1(0)
+        End If
+    End Sub
+    Private Sub Resj1_2_Click(sender As Object, e As EventArgs) Handles Resj1_2.Click
+        If Not plateaucs.ReserveJ1(1) Is Nothing And action And tourjoueur = 1 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ1(1)
+        End If
+    End Sub
+    Private Sub Resj1_3_Click(sender As Object, e As EventArgs) Handles Resj1_3.Click
+        If Not plateaucs.ReserveJ1(2) Is Nothing And action And tourjoueur = 1 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ1(2)
+        End If
+    End Sub
+    Private Sub Resj2_1_Click(sender As Object, e As EventArgs) Handles Resj2_1.Click
+        If Not plateaucs.ReserveJ2(0) Is Nothing And action And tourjoueur = 2 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ2(0)
+        End If
+    End Sub
+    Private Sub Resj2_2_Click(sender As Object, e As EventArgs) Handles Resj2_2.Click
+        If Not plateaucs.ReserveJ2(1) Is Nothing And action And tourjoueur = 2 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ2(1)
+        End If
+    End Sub
+    Private Sub Resj2_3_Click(sender As Object, e As EventArgs) Handles Resj2_3.Click
+        If Not plateaucs.ReserveJ2(2) Is Nothing And action And tourjoueur = 2 Then
+            ParachutagePossible()
+            Piecepara = plateaucs.ReserveJ2(2)
+        End If
+    End Sub
+#End Region
 End Class

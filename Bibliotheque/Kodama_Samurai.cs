@@ -20,9 +20,9 @@ namespace Bibliotheque
 
             if (this.NumJoueur == 1)
             {
-                if (plat.CheckCase(PositionX + 1, PositionY + 1, this.NumJoueur))
+                if (plat.CheckCase(PositionX - 1, PositionY -1, this.NumJoueur))
                 {
-                    caseAccesible[PositionX + 1, PositionY + 1] = 1;
+                    caseAccesible[PositionX - 1, PositionY -1] = 1;
                 }
                 if (plat.CheckCase(PositionX + 0, PositionY + 1, this.NumJoueur))
                 {
@@ -55,9 +55,9 @@ namespace Bibliotheque
                 {
                     caseAccesible[PositionX, PositionY + 1] = 1;
                 }
-                if (plat.CheckCase(PositionX - 1, PositionY - 1, this.NumJoueur))
+                if (plat.CheckCase(PositionX + 1, PositionY + 1, this.NumJoueur))
                 {
-                    caseAccesible[PositionX - 1, PositionY - 1] = 1;
+                    caseAccesible[PositionX +1, PositionY + 1] = 1;
                 }
                 if (plat.CheckCase(PositionX - 1, PositionY + 0, this.NumJoueur))
                 {

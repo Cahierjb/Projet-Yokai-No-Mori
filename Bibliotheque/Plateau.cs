@@ -114,7 +114,7 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;//on definie sa nouvelle position uniquement
                 Deplacement = true;
             }
-            else if (terrain[newx, newy].NumJoueur == 1 && !(typepiece == 3))//cas ou la case appartient au joueur adverse j1    
+            else if (terrain[newx, newy].NumJoueur == 1 && !(typepiece == 3) && Parachutage == false)//cas ou la case appartient au joueur adverse j1    
             {
                 terrain[newx, newy].NumJoueur = 2;//on change le joueur propriétaire de la piece
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
@@ -126,7 +126,7 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;//puis on place la piece du j2 dans la case
                 Deplacement = true;
             }
-            else if (terrain[newx, newy].NumJoueur == 2 && !(typepiece == 3))//cas ou la case appartient au joueur adverse j2
+            else if (terrain[newx, newy].NumJoueur == 2 && !(typepiece == 3) && Parachutage==false)//cas ou la case appartient au joueur adverse j2
             {
                 terrain[newx, newy].NumJoueur = 1;
                 if (terrain[newx, newy].GetType() == typeof(Kodama_Samurai))
@@ -138,9 +138,9 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;
                 Deplacement = true;
             }
-            else if (typepiece == 3)//cas ou la case attaqué contient un Koropokkuru
+            if (typepiece == 3)//cas ou la case attaqué contient un Koropokkuru
             {
-                findepartie = 1;
+                Findepartie = 1;
                 if(piece.NumJoueur == 1) { joueur1.Gagnant = true; }
                 else { joueur2.Gagnant = true; }
                 terrain[newx, newy] = piece;
@@ -159,6 +159,8 @@ namespace Bibliotheque
                     joueur2.Gagnant = true;
 
                 }
+                Deplacement = false;
+                Parachutage = false;
             }
         }
 
