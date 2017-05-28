@@ -79,14 +79,6 @@ Public Class Plateau
 
     Private Sub MaJplateau()
         Piecepara = Nothing
-        For Each element As Pieces In plateaucs.Terrain
-            If Not element Is Nothing Then
-                If (element.Position() = 3) Then
-                    plateaucs.Findepartie = 3
-                End If
-
-            End If
-        Next
         If (Plateaucs1.Findepartie = 0) Then
             For Each element As PictureBox In tabplateau
                 element.BackColor() = Color.Transparent

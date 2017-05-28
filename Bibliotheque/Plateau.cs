@@ -152,7 +152,7 @@ namespace Bibliotheque
             {
                 ZonePromo(piece, typepiece);//On verifie également le contenue de la zone de promotion afin de savoir si il y a un kodama a transformer
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
-                if(piece.Compteur == 3)//Puis on verifie que la piece qui se deplace na pas fais trois aller-retour
+                if(piece.Position()== 3)//Puis on verifie que la piece qui se deplace na pas fais trois aller-retour
                 {
                     Findepartie = 3;
                     joueur1.Gagnant = true;
