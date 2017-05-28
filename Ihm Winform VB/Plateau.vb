@@ -51,6 +51,9 @@ Public Class Plateau
                     Else
                         tabplateau(i, j).Load(plateaucs.Terrain(i, j).Image())
                         tabplateau(i, j).Image() = tabplateau(i, j).Image().GetThumbnailImage(90, 90, Nothing, IntPtr.Zero)
+                        If (plateaucs.Terrain(i, j).NumJoueur = 2) Then
+                            tabplateau(i, j).Image().RotateFlip(RotateFlipType.Rotate180FlipNone)
+                        End If
                     End If
                 Next j
             Next i
