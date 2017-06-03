@@ -15,7 +15,9 @@ namespace Bibliotheque
         private Pieces[] reserveJ2 = new Pieces[3];
         private Kodama pointerKod1 = new Kodama(2,1,1, "kodama.jpg");//création des "pointers" qui désignent pour le moment les deux "kodama"
         private Kodama pointerKod2 = new Kodama(1,1,2, "kodama.jpg");
-        private int findepartie = 0;
+        private int findepartie =0;
+        private int tmpssurviej1 =0;
+        private int tmpssurviej2 =0;
 
         //Constructeurs
         public Plateau() { }
@@ -150,18 +152,18 @@ namespace Bibliotheque
 
             if (Deplacement && !(Parachutage))//si il y a deplacement et que ce n'etait pas un parachutage alors on efface l'ancienne position
             {
-                ZonePromo(piece, typepiece);//On verifie également le contenue de la zone de promotion afin de savoir si il y a un kodama a transformer
+                ZonePromo(piece);//On verifie également le contenue de la zone de promotion afin de savoir si il y a un kodama a transformer ou si le koropokkuru est dans la zone
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
                 if(piece.Position()== 3)//Puis on verifie que la piece qui se deplace na pas fais trois aller-retour
                 {
-                    Findepartie = 3;
+                    Findepartie = 4;
                     joueur1.Gagnant = true;
                     joueur2.Gagnant = true;
 
                 }
-                Deplacement = false;
-                Parachutage = false;
             }
+            Deplacement = false;
+            Parachutage = false;
         }
 
         public bool CheckCase(int posX, int posY, int NumJ)//retourne vrai si la case voulue et disponible et faux si non
@@ -177,9 +179,9 @@ namespace Bibliotheque
             else return false;
         }
 
-        private void ZonePromo(Pieces piece, int typepiece)//Méthode qui verifie la piece qui se trouve dans la zone de promotion afin d'appliquer les régles qui la concerne 
+        private void ZonePromo(Pieces piece)//Méthode qui verifie la piece qui se trouve dans la zone de promotion afin d'appliquer les régles qui la concerne 
         {
-            if ((terrain[piece.PositionX, piece.PositionY].GetType() == typeof(Kodama)))//si il s'agit d'un Kodama
+            if ((piece.GetType() == typeof(Kodama)))//si il s'agit d'un Kodama
             {
                 if (piece.NumJoueur == 1 && piece.PositionX == 0)//qu'il appartient au joueur 1 et qu'il est dans sa zone de promotion
                 {
@@ -194,20 +196,22 @@ namespace Bibliotheque
                     terrain[piece.PositionX, piece.PositionY] = PointerKod1;
                 }
             }
-            else if ((terrain[piece.PositionX, piece.PositionY].GetType() == typeof(Koropokkuru)))//si il s'agit d'un Koropokkuru
+            else if (piece.GetType() == typeof(Koropokkuru))//si il s'agit d'un Koropokkuru
             {
-                if (piece.NumJoueur == 1 && piece.PositionX == 0) //qu'il appartient au joueur 1 et qu'il est dans sa zone de promotion 
-                {
-                    Findepartie = 2;
-                    joueur1.Gagnant = true;//alors le joueur 1 gagne
-                      
-                }
+                if (piece.NumJoueur == 1 && piece.PositionX == 0)
+                    tmpssurviej1++;
+                    if (tmpssurviej1 == 1 )
+                    {
+                        findepartie = 2;
+                        Joueur1.Gagnant = true;
+                    }
                 else if (piece.NumJoueur == 2 && piece.PositionX == 3)
-                {
-                    Findepartie = 2;
-                    joueur2.Gagnant = true;
-                }
-
+                    tmpssurviej2++;
+                    if (tmpssurviej2 == 1)
+                    {
+                        findepartie = 2;
+                        Joueur2.Gagnant = true;
+                    }
             }
         }
 

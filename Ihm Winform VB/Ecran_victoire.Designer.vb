@@ -35,9 +35,10 @@ Partial Class Ecran_victoire
         '
         Me.nom_joueur.AutoSize = True
         Me.nom_joueur.BackColor = System.Drawing.Color.Transparent
-        Me.nom_joueur.Location = New System.Drawing.Point(148, 293)
+        Me.nom_joueur.Location = New System.Drawing.Point(111, 238)
+        Me.nom_joueur.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.nom_joueur.Name = "nom_joueur"
-        Me.nom_joueur.Size = New System.Drawing.Size(83, 17)
+        Me.nom_joueur.Size = New System.Drawing.Size(62, 13)
         Me.nom_joueur.TabIndex = 0
         Me.nom_joueur.Text = "nom_joueur"
         '
@@ -45,9 +46,10 @@ Partial Class Ecran_victoire
         '
         Me.type_victoire.AutoSize = True
         Me.type_victoire.BackColor = System.Drawing.Color.Transparent
-        Me.type_victoire.Location = New System.Drawing.Point(214, 293)
+        Me.type_victoire.Location = New System.Drawing.Point(160, 238)
+        Me.type_victoire.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.type_victoire.Name = "type_victoire"
-        Me.type_victoire.Size = New System.Drawing.Size(88, 17)
+        Me.type_victoire.Size = New System.Drawing.Size(67, 13)
         Me.type_victoire.TabIndex = 1
         Me.type_victoire.Text = "type_victoire"
         '
@@ -56,46 +58,50 @@ Partial Class Ecran_victoire
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(166, 334)
+        Me.Label1.Location = New System.Drawing.Point(124, 271)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(244, 29)
+        Me.Label1.Size = New System.Drawing.Size(187, 25)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Il remporte la partie !"
         '
         'bout_revanche
         '
-        Me.bout_revanche.Location = New System.Drawing.Point(419, 131)
+        Me.bout_revanche.Location = New System.Drawing.Point(314, 106)
+        Me.bout_revanche.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.bout_revanche.Name = "bout_revanche"
-        Me.bout_revanche.Size = New System.Drawing.Size(139, 45)
+        Me.bout_revanche.Size = New System.Drawing.Size(104, 37)
         Me.bout_revanche.TabIndex = 3
         Me.bout_revanche.Text = "Revanche"
         Me.bout_revanche.UseVisualStyleBackColor = True
         '
         'bout_chang_joueur
         '
-        Me.bout_chang_joueur.Location = New System.Drawing.Point(419, 197)
+        Me.bout_chang_joueur.Location = New System.Drawing.Point(314, 160)
+        Me.bout_chang_joueur.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.bout_chang_joueur.Name = "bout_chang_joueur"
-        Me.bout_chang_joueur.Size = New System.Drawing.Size(139, 45)
+        Me.bout_chang_joueur.Size = New System.Drawing.Size(104, 37)
         Me.bout_chang_joueur.TabIndex = 4
         Me.bout_chang_joueur.Text = "Changer de joueurs"
         Me.bout_chang_joueur.UseVisualStyleBackColor = True
         '
         'bout_menu
         '
-        Me.bout_menu.Location = New System.Drawing.Point(32, 161)
+        Me.bout_menu.Location = New System.Drawing.Point(24, 131)
+        Me.bout_menu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.bout_menu.Name = "bout_menu"
-        Me.bout_menu.Size = New System.Drawing.Size(139, 45)
+        Me.bout_menu.Size = New System.Drawing.Size(104, 37)
         Me.bout_menu.TabIndex = 5
         Me.bout_menu.Text = "Menu principal"
         Me.bout_menu.UseVisualStyleBackColor = True
         '
         'Ecran_victoire
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(582, 403)
+        Me.ClientSize = New System.Drawing.Size(436, 327)
         Me.Controls.Add(Me.bout_menu)
         Me.Controls.Add(Me.bout_chang_joueur)
         Me.Controls.Add(Me.bout_revanche)
@@ -103,6 +109,7 @@ Partial Class Ecran_victoire
         Me.Controls.Add(Me.type_victoire)
         Me.Controls.Add(Me.nom_joueur)
         Me.DoubleBuffered = True
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Ecran_victoire"
         Me.Text = "Fin de la partie"
         Me.ResumeLayout(False)

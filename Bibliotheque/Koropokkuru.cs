@@ -51,6 +51,7 @@ namespace Bibliotheque
             return caseAccesible;
         }
 
+
         //fonction en vb qui presente le tableau case accesible et qui renvoie les coordonées de la case choisie 
 
     }

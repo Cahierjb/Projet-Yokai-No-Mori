@@ -9,22 +9,20 @@
             type_victoire.Text = "a attrapé le Koropokkuru adverse !"
         ElseIf (Ihm_Winform_VB.Plateau.Plateaucs1.Findepartie = 2) Then
             type_victoire.Text = "a emmené son Koropokkuru dans la zone adverse !"
+        ElseIf (Ihm_Winform_VB.Plateau.Plateaucs1.Findepartie = 3) Then
+            type_victoire.Text = "a fais capituler son adversaire !"
         End If
     End Sub
     Private Sub bout_menu_Click(sender As Object, e As EventArgs) Handles bout_menu.Click
         Me.Close()
-        Menu_princ.Show()
     End Sub
 
     Private Sub bout_revanche_Click(sender As Object, e As EventArgs) Handles bout_revanche.Click
         Me.Close()
-        Plateau.Show()
     End Sub
 
     Private Sub bout_chang_joueur_Click(sender As Object, e As EventArgs) Handles bout_chang_joueur.Click
         Me.Close()
-        Profils.Show()
     End Sub
-
 
 End Class

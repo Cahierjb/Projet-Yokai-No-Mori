@@ -6,16 +6,17 @@ Public Class Plateau
     Dim Joueur2 As InfoJoueur
 
     Dim plateaucs As New Bibliotheque.Plateau
+
     Dim tabplateau(3, 2) As PictureBox
     Dim ReserveJ1(3) As PictureBox
     Dim ReserveJ2(3) As PictureBox
+
     Dim PieceX As Integer
     Dim PieceY As Integer
+
     Dim tourjoueur As Integer
     Dim action As Boolean
     Dim Piecepara As Pieces
-
-
 
     Dim tanuj1 As New Tanuki(3, 2, 1, "tanuki.jpg")
     Dim koroj1 As New Koropokkuru(3, 1, 1, "koro.jpg")
@@ -115,7 +116,7 @@ Public Class Plateau
             For Each element As PictureBox In tabplateau
                 element.BackColor() = Color.Transparent
             Next element
-            If Plateaucs1.Findepartie > 0 And Plateaucs1.Findepartie < 3 Then
+            If Plateaucs1.Findepartie > 0 And Plateaucs1.Findepartie < 4 Then
                 Ecran_victoire.Show()
             Else
                 Ecran_match_nul.Show()
@@ -154,11 +155,13 @@ Public Class Plateau
         If Plateaucs1.Joueur1.Commence Then
             tourjoueur = 1
             tourj2.Enabled() = False
+            abandj2.Enabled() = False
             MessageBox.Show(Joueur11.NomJoueur + " est le joueur qui commence !", "Premier Joueur :", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         If Plateaucs1.Joueur2.Commence Then
             tourjoueur = 2
             tourj1.Enabled() = False
+            abandj1.Enabled() = False
             MessageBox.Show(Joueur22.NomJoueur + " est le joueur qui commence !", "Premier Joueur :", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         action = True
@@ -178,26 +181,44 @@ Public Class Plateau
         PremierJoueur()
     End Sub
 
-    Private Sub tourj1_Click(sender As Object, e As EventArgs) Handles tourj1.Click
+    Private Sub toursuivant(sender As Object, e As EventArgs) Handles tourj1.Click, tourj2.Click
         If (action = False) Then
-            MaJplateau()
-            tourj1.Enabled() = False
-            tourj2.Enabled() = True
-            tourjoueur = 2
-            action = True
+            If (sender Is tourj1) Then
+                MaJplateau()
+                abandj1.Enabled() = False
+                abandj2.Enabled() = True
+                tourj1.Enabled() = False
+                tourj2.Enabled() = True
+                tourjoueur = 2
+                action = True
+            ElseIf (sender Is tourj2) Then
+                MaJplateau()
+                abandj2.Enabled() = False
+                abandj1.Enabled() = True
+                tourj2.Enabled() = False
+                tourj1.Enabled() = True
+                tourjoueur = 1
+                action = True
+            End If
         End If
 
     End Sub
 
-    Private Sub tourj2_Click(sender As Object, e As EventArgs) Handles tourj2.Click
-        If (action = False) Then
-            MaJplateau()
-            tourj2.Enabled() = False
-            tourj1.Enabled() = True
-            tourjoueur = 1
-            action = True
+    Private Sub Abandon(sender As Object, e As EventArgs) Handles abandj1.Click, abandj2.Click
+        If (sender Is abandj1) Then
+            Plateaucs1.Findepartie() = 3
+            Joueur22.Gagnant = True
+        ElseIf (sender Is abandj2) Then
+            Plateaucs1.Findepartie() = 3
+            Joueur11.Gagnant = True
         End If
+        MaJplateau()
     End Sub
+
+    Private Sub Aide_Click(sender As Object, e As EventArgs) Handles Aide.Click
+        MessageBox.Show("Cliquer sur l'une de vos pieces pour afficher les deplacements qu'elle peut effectuer !", "Aide", MessageBoxButtons.OK, MessageBoxIcon.Question)
+    End Sub
+
 
 #Region "Clique Picture Box Plateau"
     Private Sub tab1_Click(sender As Object, e As EventArgs) Handles tab1.Click
@@ -492,5 +513,7 @@ Public Class Plateau
             Piecepara = Plateaucs1.ReserveJ2(2)
         End If
     End Sub
+
 #End Region
+
 End Class

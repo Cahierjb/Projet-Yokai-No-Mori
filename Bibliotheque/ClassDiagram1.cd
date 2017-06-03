@@ -3,56 +3,56 @@
   <Class Name="Bibliotheque.Plateau">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAACAACAAAAAAACAAAAAAAAIgAgAAAIAAAABEBAA=</HashCode>
+      <HashCode>AIEAAACAACAAAEgAAiAAACIBAQIgAgEAAMAAAABATAA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Pieces">
     <Position X="8.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAEAAEggAQAIAAAAAAAAAAAAAQAAAAQQAA=</HashCode>
+      <HashCode>AAAAACAAAAAGAQEggAQAIAAAEAAAABCAAAQAgAAQQAA=</HashCode>
       <FileName>Pieces.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.InfoJoueur">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAIAAAQAAAAQAAAAAAAEAAQABAAQAAA=</HashCode>
       <FileName>InfoJoueur.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kitsune">
     <Position X="5.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kitsune.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Tanuki">
     <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tanuki.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kodama">
     <Position X="9.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kodama.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Koropokkuru">
-    <Position X="11" Y="2.5" Width="1.5" />
+    <Position X="11" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Koropokkuru.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Bibliotheque.Kodama_Samurai">
     <Position X="9.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Kodama_Samurai.cs</FileName>
     </TypeIdentifier>
   </Class>
