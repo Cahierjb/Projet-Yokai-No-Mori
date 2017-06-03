@@ -122,6 +122,7 @@ Public Class Plateau
                 Ecran_match_nul.Show()
             End If
             Me.Close()
+            Me.Hide()
         End If
 
     End Sub

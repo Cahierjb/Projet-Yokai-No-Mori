@@ -5,8 +5,8 @@
         _nomj1 = TextBoxj1.Text
         _nomj2 = TextBoxj2.Text
         Plateau.Show()
-        Ihm_Winform_VB.Menu_princ.Close()
-        Me.Close()
+        Ihm_Winform_VB.Menu_princ.Hide()
+        Me.Hide()
     End Sub
 
     Public Property NameJ1() As String

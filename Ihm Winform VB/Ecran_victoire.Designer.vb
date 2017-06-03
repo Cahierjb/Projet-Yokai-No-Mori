@@ -27,7 +27,6 @@ Partial Class Ecran_victoire
         Me.type_victoire = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.bout_revanche = New System.Windows.Forms.Button()
-        Me.bout_chang_joueur = New System.Windows.Forms.Button()
         Me.bout_menu = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -67,28 +66,18 @@ Partial Class Ecran_victoire
         '
         'bout_revanche
         '
-        Me.bout_revanche.Location = New System.Drawing.Point(314, 106)
-        Me.bout_revanche.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.bout_revanche.Location = New System.Drawing.Point(321, 131)
+        Me.bout_revanche.Margin = New System.Windows.Forms.Padding(2)
         Me.bout_revanche.Name = "bout_revanche"
         Me.bout_revanche.Size = New System.Drawing.Size(104, 37)
         Me.bout_revanche.TabIndex = 3
         Me.bout_revanche.Text = "Revanche"
         Me.bout_revanche.UseVisualStyleBackColor = True
         '
-        'bout_chang_joueur
-        '
-        Me.bout_chang_joueur.Location = New System.Drawing.Point(314, 160)
-        Me.bout_chang_joueur.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.bout_chang_joueur.Name = "bout_chang_joueur"
-        Me.bout_chang_joueur.Size = New System.Drawing.Size(104, 37)
-        Me.bout_chang_joueur.TabIndex = 4
-        Me.bout_chang_joueur.Text = "Changer de joueurs"
-        Me.bout_chang_joueur.UseVisualStyleBackColor = True
-        '
         'bout_menu
         '
         Me.bout_menu.Location = New System.Drawing.Point(24, 131)
-        Me.bout_menu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.bout_menu.Margin = New System.Windows.Forms.Padding(2)
         Me.bout_menu.Name = "bout_menu"
         Me.bout_menu.Size = New System.Drawing.Size(104, 37)
         Me.bout_menu.TabIndex = 5
@@ -103,13 +92,12 @@ Partial Class Ecran_victoire
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(436, 327)
         Me.Controls.Add(Me.bout_menu)
-        Me.Controls.Add(Me.bout_chang_joueur)
         Me.Controls.Add(Me.bout_revanche)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.type_victoire)
         Me.Controls.Add(Me.nom_joueur)
         Me.DoubleBuffered = True
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Ecran_victoire"
         Me.Text = "Fin de la partie"
         Me.ResumeLayout(False)
@@ -121,6 +109,5 @@ Partial Class Ecran_victoire
     Friend WithEvents type_victoire As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents bout_revanche As Button
-    Friend WithEvents bout_chang_joueur As Button
     Friend WithEvents bout_menu As Button
 End Class
