@@ -15,9 +15,8 @@ namespace Bibliotheque
         private Pieces[] reserveJ2 = new Pieces[3];
         private Kodama pointerKod1 = new Kodama(2,1,1, "kodama.jpg");//création des "pointers" qui désignent pour le moment les deux "kodama"
         private Kodama pointerKod2 = new Kodama(1,1,2, "kodama.jpg");
-        private int findepartie =0;
-        private int tmpssurviej1 =0;
-        private int tmpssurviej2 =0;
+        private int findepartie = 0;
+        int[] AncienePosition = new int[2];
 
         //Constructeurs
         public Plateau() { }
@@ -91,7 +90,6 @@ namespace Bibliotheque
         public void SetPosition(Pieces piece, int newx, int newy)//Permet de changer la position d'une "Pieces"
         {
             int typepiece = -1;
-            int[] AncienePosition = new int[2];
             AncienePosition = GetPosition(piece);//avant de modifier l'emplacement de la Pieces, on récupere son anciene position 
 
             piece.PositionX = newx;//On change maintenant la position pour la piece elle même
@@ -148,12 +146,10 @@ namespace Bibliotheque
                 terrain[newx, newy] = piece;
                 terrain[AncienePosition[0], AncienePosition[1]] = null;
             }
-      
 
-            if (Deplacement && !(Parachutage))//si il y a deplacement et que ce n'etait pas un parachutage alors on efface l'ancienne position
+            if (Deplacement)//si il y a deplacement et que ce n'etait pas un parachutage alors on efface l'ancienne position
             {
-                ZonePromo(piece);//On verifie également le contenue de la zone de promotion afin de savoir si il y a un kodama a transformer ou si le koropokkuru est dans la zone
-                terrain[AncienePosition[0], AncienePosition[1]] = null;
+                if (!Parachutage)terrain[AncienePosition[0], AncienePosition[1]] = null;
                 if(piece.Position()== 3)//Puis on verifie que la piece qui se deplace na pas fais trois aller-retour
                 {
                     Findepartie = 4;
@@ -162,6 +158,7 @@ namespace Bibliotheque
 
                 }
             }
+            ZonePromo(piece, Parachutage);//Enfin On verifie le contenue de la zone de promotion afin de savoir si il y a un kodama a transformer ou si le koropokkuru est dans la zone
             Deplacement = false;
             Parachutage = false;
         }
@@ -179,40 +176,50 @@ namespace Bibliotheque
             else return false;
         }
 
-        private void ZonePromo(Pieces piece)//Méthode qui verifie la piece qui se trouve dans la zone de promotion afin d'appliquer les régles qui la concerne 
+        private void ZonePromo(Pieces dernierePieceJouée,bool para)//Méthode qui verifie la piece qui se trouve dans la zone de promotion afin d'appliquer les régles qui la concerne 
         {
-            if ((piece.GetType() == typeof(Kodama)))//si il s'agit d'un Kodama
+            Pieces piece;
+            for (int i = 0; i < 2  ; i++)
             {
-                if (piece.NumJoueur == 1 && piece.PositionX == 0)//qu'il appartient au joueur 1 et qu'il est dans sa zone de promotion
+                for (int j = 0; j < 3; j++)
                 {
-                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1, "kodama_sam.jpg");//alors on instancie le Kodama_Samurai
-                    PointerKod2 = (Kodama_Samurai)piece;//et on fais pointer le "pointer" sur celui-ci
-                    terrain[piece.PositionX, piece.PositionY] = PointerKod2;
-                }
-                else if (piece.NumJoueur == 2 && piece.PositionX == 3)
-                {
-                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 2, "kodama_sam.jpg");
-                    PointerKod1 = (Kodama_Samurai)piece;
-                    terrain[piece.PositionX, piece.PositionY] = PointerKod1;
-                }
-            }
-            else if (piece.GetType() == typeof(Koropokkuru))//si il s'agit d'un Koropokkuru
-            {
-                if (piece.NumJoueur == 1 && piece.PositionX == 0)
-                    tmpssurviej1++;
-                    if (tmpssurviej1 == 1 )
-                    {
-                        findepartie = 2;
-                        Joueur1.Gagnant = true;
+                    piece = Terrain[i * 3, j];
+                    if (piece != null)
+                    { 
+                            if ((piece.GetType() == typeof(Kodama) && para == false))//si il s'agit d'un Kodama
+                            {
+                                if (piece.NumJoueur == 1 && piece.PositionX == 0)//qu'il appartient au joueur 1 et qu'il est dans sa zone de promotion
+                                {
+                                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 1, "kodama_sam.jpg");//alors on instancie le Kodama_Samurai
+                                    PointerKod2 = (Kodama_Samurai)piece;//et on fais pointer le "pointeur" sur celui-ci
+                                    terrain[piece.PositionX, piece.PositionY] = PointerKod2;
+                                }
+                                else if (piece.NumJoueur == 2 && piece.PositionX == 3)
+                                {
+                                    piece = new Kodama_Samurai(piece.PositionX, piece.PositionY, 2, "kodama_sam.jpg");
+                                    PointerKod1 = (Kodama_Samurai)piece;
+                                    terrain[piece.PositionX, piece.PositionY] = PointerKod1;
+                                }
+                            }
+                            else if (piece.GetType() == typeof(Koropokkuru))//si il s'agit d'un Koropokkuru
+                            {
+
+                             if (piece.NumJoueur == 1 && piece.PositionX == 0 && AncienePosition[0] == 0 && dernierePieceJouée.NumJoueur == 2)
+                                {
+                                    Findepartie = 2;
+                                    Joueur1.Gagnant = true;
+
+                                }
+                                else if (piece.NumJoueur == 2 && piece.PositionX == 3 && AncienePosition[0] == 3 && dernierePieceJouée.NumJoueur == 1)
+                                {
+                                    Findepartie = 2;
+                                    Joueur2.Gagnant = true;
+                                }
+                            }
+                       }
                     }
-                else if (piece.NumJoueur == 2 && piece.PositionX == 3)
-                    tmpssurviej2++;
-                    if (tmpssurviej2 == 1)
-                    {
-                        findepartie = 2;
-                        Joueur2.Gagnant = true;
-                    }
-            }
+                }
+
         }
 
         public void initJoueur(InfoJoueur j1,InfoJoueur j2)//Méthode qui instancie le joueur avec les informations obtenue dans le programme principal et qui determine le joueur qui commence

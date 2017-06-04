@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Ecran_victoire
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Ecran_victoire
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ecran_victoire))
         Me.nom_joueur = New System.Windows.Forms.Label()
@@ -66,7 +66,7 @@ Partial Class Ecran_victoire
         '
         'bout_revanche
         '
-        Me.bout_revanche.Location = New System.Drawing.Point(321, 131)
+        Me.bout_revanche.Location = New System.Drawing.Point(321, 125)
         Me.bout_revanche.Margin = New System.Windows.Forms.Padding(2)
         Me.bout_revanche.Name = "bout_revanche"
         Me.bout_revanche.Size = New System.Drawing.Size(104, 37)
@@ -76,7 +76,7 @@ Partial Class Ecran_victoire
         '
         'bout_menu
         '
-        Me.bout_menu.Location = New System.Drawing.Point(24, 131)
+        Me.bout_menu.Location = New System.Drawing.Point(28, 125)
         Me.bout_menu.Margin = New System.Windows.Forms.Padding(2)
         Me.bout_menu.Name = "bout_menu"
         Me.bout_menu.Size = New System.Drawing.Size(104, 37)

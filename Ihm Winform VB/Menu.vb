@@ -16,6 +16,11 @@ Public Class Menu_princ
         rep = MessageBox.Show("Voulez-vous vraiment quitter?", "Quitter", MessageBoxButtons.YesNo)
         If (rep = MsgBoxResult.Yes) Then
             Me.Close()
+            Ihm_Winform_VB.Ecran_match_nul.Close()
+            Ihm_Winform_VB.Ecran_victoire.Close()
+            Ihm_Winform_VB.Plateau.Close()
+            Ihm_Winform_VB.Profils.Close()
+            Ihm_Winform_VB.Regles.Close()
         End If
     End Sub
 End Class
