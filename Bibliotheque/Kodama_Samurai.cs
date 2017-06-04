@@ -74,6 +74,5 @@ namespace Bibliotheque
             }
             return caseAccesible;
         }
-
     }
 }

@@ -13,7 +13,7 @@ namespace Bibliotheque
         private int numJoueur;
         protected string image;
         protected int[,] caseAccesible = new int[4, 3];
-        private int compteur = 0;//ce champs est utilisé pour compter le nombre d'aller retour d'une piece
+        private int compteur = 0;//ce champs est utilisé pour compter le nombre d'aller-retour d'une piece
         private bool aller = false;
         private bool retour = false;
 
@@ -59,8 +59,8 @@ namespace Bibliotheque
 
         // Méthode
 
-        public virtual int[,] CaseAccessible(Plateau plat)//Méthode qui renvoi un tableau de même dimension que le terrain avec des 0 aux endroits où la piece ne peut pas aller et des 1 aux endroits où elle peut  
-        {                                                 //Cette méthode est redefinie pour chacune des classes filles de Pieces, car chaque piece posséde des déplacements differents
+        public virtual int[,] CaseAccessible(Plateau plat)//Méthode qui renvoie un tableau de même dimension que le terrain avec des 0 aux endroits où la piece ne peut pas aller et des 1 aux endroits où elle peut  
+        {                                                 //Cette méthode est redéfinie pour chacune des classes filles de Pieces, car chaque piece possède des déplacements differents
             int[,] caseAccesible = new int[4, 3];
             return caseAccesible;
         }
@@ -78,13 +78,13 @@ namespace Bibliotheque
             return caseAccesible;
         } //Méthode qui initialise le tableau CaseAccesible
 
-        public void Deplacement(int posX, int posY, Plateau plat)//Méthode qui appel la Méthode de plateau SetPosition pour la piece
+        public void Deplacement(int posX, int posY, Plateau plat)//Méthode qui appelle la Méthode de plateau SetPosition pour la piece
         {
             plat.SetPosition(this, posX, posY);
 
         }
 
-        public void Parachutage(int posX, int posY, Plateau plat)//Méthode de parachutage, cet méthode verifie que la piece destinée a etre parachutée se trouve bien dans la reserve avant d'appeler la méthode SetPosition de plateau et de la supprimer de la reserve
+        public void Parachutage(int posX, int posY, Plateau plat)//Méthode de parachutage, cette méthode verifie que la piece destinée a être parachutée se trouve bien dans la reserve avant d'appeler la méthode SetPosition de plateau et de la supprimer de la reserve
         {
             for (int i = 0; i <= 2; i++)
             {
@@ -146,7 +146,7 @@ namespace Bibliotheque
                 }
             }
             return compteur;
-        }//Cet méthode permet de compter le nombres d'aller-retour d'un Kodama
+        }//Cette méthode permet de compter le nombre d'aller-retour d'un Kodama
 
         #region Methode de Test
         public void AfficheTestPiece()
