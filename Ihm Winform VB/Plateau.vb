@@ -31,8 +31,8 @@ Public Class Plateau
     Dim kodj2 As New Kodama(1, 1, 2, "kodama.jpg")
 
 
-    'Ici,on créés des accesseur au infoformations des Joueurs et au plateau afin de les utilisée dans les formulaires de fin de partie
-    'Propriétées
+    'Ici,on crée des accesseurs au informations des Joueurs et au plateau afin de les utiliser dans les formulaires de fin de partie
+    'Propriétés
     Public Property Joueur11 As InfoJoueur
         Get
             Return Joueur1
@@ -62,8 +62,8 @@ Public Class Plateau
 
 
     'Methodes
-    'cette methode permet de lié chaque picture box du design a un tableau de pictureBox equivalent au tableau de piece du programme C#
-    'cela permet donc de faire le lien entre les objets et leur apparence physique sur le plateau
+    'Cette methode permet de lier chaque picture box du design a un tableau de pictureBox equivalent au tableau de piece du programme C#
+    'Cela permet donc de faire le lien entre les objets et leur apparence physique sur le plateau
     Private Sub InitTabPlateau()
         tabplateau(0, 0) = tab1
         tabplateau(0, 1) = tab2
@@ -86,11 +86,11 @@ Public Class Plateau
         MaJplateau()
     End Sub
 
-    'La methode MaJplateau mets a jour l'affichage du plateau en fonctionne des differente action qui peuvent etre effectuer
-    'c'est également cette methode qui verifie si les condition de fin de partie on etait obetenues
+    'La methode MaJplateau met a jour l'affichage du plateau en fonction des differentes actions qui peuvent etre effectuées
+    'C'est également cette methode qui verifie si les conditions de fin de partie on été atteintes
     Private Sub MaJplateau()
         Piecepara = Nothing
-        'Si la partie n'est pas finis
+        'Si la partie n'est pas finie
         If (Plateaucs1.Findepartie = 0) Then
             'on initialise la couleur de fond de chaque picture box a "transparent"
             For Each element As PictureBox In tabplateau
@@ -99,7 +99,7 @@ Public Class Plateau
 
             For i = 0 To 3
                 For j = 0 To 2
-                    'on verifie ensuite chaque case de notre tableau de piece pour remplir la picture box associé en consequence
+                    'on verifie ensuite chaque case de notre tableau de piece pour remplir la picture box associée en consequence
                     ' si la case est vide alors on ne met aucune image dans la picture box correspondante
                     If Plateaucs1.Terrain(i, j) Is Nothing Then
                         tabplateau(i, j).Image() = Nothing
@@ -113,7 +113,7 @@ Public Class Plateau
                     End If
                 Next j
             Next i
-            'ici on applique le meme proceder que precedement mais appliqué au deux tableau de reserve
+            'Ici on applique le meme procédé que precedement mais appliqué au deux tableaux de réserve
             For y = 0 To 2
                 If (Plateaucs1.ReserveJ1(y) Is Nothing) Then
                     ReserveJ1(y).Image() = Nothing
@@ -130,9 +130,9 @@ Public Class Plateau
             Next y
 
         End If
-        'Si la partie est finis
+        'Si la partie est finie
         If (Plateaucs1.Findepartie > 0) Then
-            'On nettoie le plateau des coloration due au mouvement des pieces
+            'On nettoie le plateau des colorations due au mouvement des pièces
             For Each element As PictureBox In tabplateau
                 element.BackColor() = Color.Transparent
             Next element
@@ -148,8 +148,8 @@ Public Class Plateau
 
     End Sub
 
-    'Cette methode recupere le tableau "CaseAccessible" de la piece placer sur la picture box qui appelle la fonction 
-    'et colorie les Cases sur les quels elle peut se deplacer en jaune 
+    'Cette methode récupère le tableau "CaseAccessible" de la piece placée sur la picture box qui appelle la fonction 
+    'et colorie les Cases sur lesquelles elle peut se deplacer en jaune 
     Private Sub DeplacementPossible()
         MaJplateau()
         Plateaucs1.Terrain(PieceX, PieceY).InitTableau()
@@ -175,7 +175,7 @@ Public Class Plateau
         Next i
     End Sub
 
-    'Cette methode annoce le joueur qui commence et desactive les boutons de son adversaire pour le premiers tour
+    'Cette methode annonce le joueur qui commence et désactive les boutons de son adversaire pour le premier tour
     Private Sub PremierJoueur()
         Plateaucs1.initJoueur(Joueur11, Joueur22)
         If Plateaucs1.Joueur1.Commence Then
@@ -194,7 +194,7 @@ Public Class Plateau
 
     End Sub
 
-    'Cette methode est appelé au chargtement du plateau, elle recupere les données des joueur fournis par le formulaire "Profils"
+    'Cette methode est appelée au chargement du plateau, elle récupère les données des joueurs fournis par le formulaire "Profils"
     'et initialise le terrain en placant chaque piece a sa position initiale
     Private Sub Plateau_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Labelj1.Text = Profils.NameJ1()
@@ -209,8 +209,8 @@ Public Class Plateau
         PremierJoueur()
     End Sub
 
-    'Cette methode evenement attend le clique sur les boutons tour suivant de chaque joueur.
-    'lorsqu'un joueur clique la methode verifie qu'il a bien joué sont tour et desactive ses boutons 
+    'Cette methode évènement attend le clique sur les boutons "Tour suivant" de chaque joueur.
+    'Lorsqu'un joueur clique, la méthode vérifie qu'il a bien joué son tour et desactive ses boutons 
     'pour activer ceux du joueur adverse
     Private Sub toursuivant(sender As Object, e As EventArgs) Handles tourj1.Click, tourj2.Click
         If (action = False) Then
@@ -235,8 +235,8 @@ Public Class Plateau
 
     End Sub
 
-    'Cette methode evenement attend le clique sur les boutons abandon de chaque joueurs. 
-    'lorsqu'un joueur clique sur celui ci il fait automatiquement gagné sont adversaire
+    'Cette methode événement attend le clique sur les boutons "Abandon" de chaque joueur. 
+    'Lorsqu'un joueur clique sur celui-ci il fait automatiquement gagner sont adversaire
     Private Sub Abandon(sender As Object, e As EventArgs) Handles abandj1.Click, abandj2.Click
         If (sender Is abandj1) Then
             Plateaucs1.Findepartie() = 3
@@ -248,15 +248,15 @@ Public Class Plateau
         MaJplateau()
     End Sub
 
-    'Cette methode evenement gere un boutons aide qui explique au joueurs ce qu'il doivent faire pour jouer
+    'Cette méthode événement gère un bouton aide qui explique aux joueurs ce qu'il doivent faire pour jouer
     Private Sub Aide_Click(sender As Object, e As EventArgs) Handles Aide.Click
-        MessageBox.Show("Cliquer sur l'une de vos pieces pour afficher les deplacements qu'elle peut effectuer, cliquer ensuite sur une une des cases coloriées pour deplacer votre piece !", "Aide", MessageBoxButtons.OK, MessageBoxIcon.Question)
+        MessageBox.Show("Cliquez sur l'une de vos pièces pour afficher les déplacements qu'elle peut effectuer, cliquez ensuite sur une une des cases coloriées pour deplacer votre piece !", "Aide", MessageBoxButtons.OK, MessageBoxIcon.Question)
     End Sub
 
-    'Cette region contient l'ensemble des methode evenement de chaque PictureBox du Plateau de jeu
+    'Cette region contient l'ensemble des méthodes événement de chaque PictureBox du Plateau de jeu
     'Lorsqu'un joueur clique dessus on verifie l'action qu'il effectue :
     '-si la case est vide, il ne se passe rien
-    '-si la case contient et affiche une piece,on recupere ses coordonnées et on appelle la methode deplacement possible
+    '-si la case contient et affiche une piece,on récupère ses coordonnées et on appelle la méthode deplacement possible
     '-si la case est coloré en jaune et qu'il s'agit d'un deplacement alors on deplace la piece qui a fait appelle a la methode "Deplacementpossible" dans cette case
     '-si la case est coloré en jaune et qu'il s'agit d'un parachutage alors on deplace la piece de la reserve qui a fait appelle a la methode "Parachutage" dans cette case
 #Region "Clique Picture Box Plateau"
@@ -514,8 +514,8 @@ Public Class Plateau
 
 #End Region
 
-    'Cette region contient l'ensemble des methode evenement de chaque PictureBox des reserve
-    'si la reserve contient la piece en question et que c'est le tour du joueur proprietaire de la reserve
+    'Cette region contient l'ensemble des méthodes événement de chaque PictureBox des réserves
+    'Si la reserve contient la piece en question et que c'est le tour du joueur proprietaire de la reserve
     'alors on appelle la methode Parachutagepossible" pour cette piece
 #Region "Clique Picture Box Reserve"
     Private Sub Resj1_1_Click(sender As Object, e As EventArgs) Handles Resj1_1.Click
