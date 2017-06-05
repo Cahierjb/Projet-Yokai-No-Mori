@@ -10,11 +10,11 @@ namespace Bibliotheque
         //champs
         private string nomJoueur;
         private int numJoueur;
-        private bool gagnant = false;//Booléan qui est vrais quand le joueur a gagné et faux sinon
-        private bool commence = false;//Booléan qui est vrais quand le joueur a était tiré au sort pour commencer et faux sinon
+        private bool gagnant = false;//Booléan qui est vrai quand le joueur a gagné et faux sinon
+        private bool commence = false;//Booléan qui est vrai quand le joueur a été tiré au sort pour commencer et faux sinon
 
 
-        //propriétées
+        //propriétés
         public string NomJoueur
         {
             get { return nomJoueur; }

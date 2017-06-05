@@ -10,7 +10,7 @@
         ElseIf (Ihm_Winform_VB.Plateau.Plateaucs1.Findepartie = 2) Then
             type_victoire.Text = "a emmené son Koropokkuru dans la zone adverse !"
         ElseIf (Ihm_Winform_VB.Plateau.Plateaucs1.Findepartie = 3) Then
-            type_victoire.Text = "a fais capituler son adversaire !"
+            type_victoire.Text = "a fait capituler son adversaire !"
         End If
     End Sub
     Private Sub bout_menu_Click(sender As Object, e As EventArgs) Handles bout_menu.Click
